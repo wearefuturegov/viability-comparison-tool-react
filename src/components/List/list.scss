@@ -1,0 +1,31 @@
+.list-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: scroll;
+    width: 27%;
+    background: #fff;
+    padding: 15px;
+    height: -webkit-calc(100% - 30px);
+    height:    -moz-calc(100% - 30px);
+    height:         calc(100% - 30px);
+}
+
+.list-item {
+    margin: 0 auto;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: -webkit-calc(100% - 20px);
+    width:    -moz-calc(100% - 20px);
+    width:         calc(100% - 20px);
+    background: #fff;
+
+    &:hover {
+        cursor: pointer;
+        background: #eee;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

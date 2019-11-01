@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom';
-import Map from '../../components/Map'
-import List from '../../components/List'
+import Map from '../../components/Map/Map'
+import List from '../../components/List/List'
 
 export default class Home extends Component {
     state = {
@@ -40,8 +40,24 @@ export default class Home extends Component {
             },
             { 
                 id: 3,
+                latLng: { lat: 51.530986, lng:  -0.033363 }, 
+                title: "Regency Court",
+                local_auth: "Tower Hamlets",
+                date: "2019-01-08",
+                gdv: 27195577,
+                construction: 22435542,
+                prof_fees: 2692265,
+                dev_profit: 543912,
+                residual_land_value: -4751358,
+                bench_land_value: 4900000,
+                residential_units: 92,
+                habitable_rooms: null,
+                commercial_area: 0
+            },
+            { 
+                id: 4,
                 latLng: { lat: 51.533389, lng:  -0.057512 }, 
-                title: "519-523 Cambridge Heath rd",
+                title: "519-523 Cambridge Heath Rd",
                 local_auth: "Tower Hamlets",
                 date: "2019-01-08",
                 gdv: 5380821,

@@ -1,6 +1,7 @@
 import React from "react";
 import L from "leaflet";
 import "./leaflet.css";
+import "./map.scss";
 
 const style = {
   width: "70%",
