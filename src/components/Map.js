@@ -3,8 +3,12 @@ import L from "leaflet";
 import "./leaflet.css";
 
 const style = {
-  width: "100%",
-  height: "900px"
+  width: "70%",
+  height: "100%",
+  position: "absolute",
+  top: "0",
+  right: "0",
+  bottom: "0"
 };
 
 class Map extends React.Component {

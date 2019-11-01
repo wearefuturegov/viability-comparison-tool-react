@@ -9,32 +9,14 @@ export default class Home extends Component {
             { latLng: { lat: 51.505, lng:  -0.09 }, title: 2 }
         ]
     };
-    addMarker = () => {
-        const { markersData } = this.state;
-        const lastMarker = markersData[markersData.length - 1];
 
-        this.setState({
-        markersData: [
-            ...markersData, {
-                title: +lastMarker.title + 1,
-                latLng: {
-                    lat: lastMarker.latLng.lat + 0.0001,
-                    lng: lastMarker.latLng.lng + 0.0001,
-                }
-            }
-        ]
-        });
-    };
+    
     render() {
         const { markersData } = this.state;
         return (
         <div>
             <Map markersData={markersData} />
-            <button
-            onClick={this.addMarker}
-            >
-            Add marker
-            </button>
+            
             <ul>Markers data:
             {markersData.map(marker => (
                 <li key={marker.title}>
