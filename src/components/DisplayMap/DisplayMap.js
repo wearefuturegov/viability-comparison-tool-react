@@ -58,14 +58,14 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
 				<Marker 
 					key={marker.id}
 					icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker == marker.id ? developmentHoverIcon : developmentIcon))} 
-					position={marker.latLng} 
+					position={[marker.latitude, marker.longitude]} 
 					onClick={() => { toggleActiveMarker(marker.id)}}
 					onMouseOver={() => { toggleHoverMarker(marker.id)} }
 					onMouseOut={() => { toggleHoverMarker(0)} }
 				>
 					
 					{/* <Popup>
-						{marker.title}
+						{marker.name}
 					</Popup> */}
 				</Marker>
 			))};
