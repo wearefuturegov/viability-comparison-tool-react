@@ -39,10 +39,10 @@ const DisplayMap = ({markersData, activeElement, toggleActiveElement}) => {
 			<GeoJSON style={southwarkStyle} data={southwarkData}></GeoJSON>
 			<GeoJSON style={towerHamletsStyle} data={towerHamletsData}></GeoJSON>
 			{markersData.map(marker => (
-				<Marker position={marker.latLng}>
-					<Popup>
+				<Marker position={marker.latLng} onClick={() => { toggleActiveElement(marker.id)}}>
+					{/* <Popup>
 						{marker.title}
-					</Popup>
+					</Popup> */}
 				</Marker>
 			))};
 		</Map>

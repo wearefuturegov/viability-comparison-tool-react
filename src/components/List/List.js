@@ -9,7 +9,6 @@ const List = ({markersData, activeElement, toggleActiveElement}) => {
 			<div key={marker.id} className={"list-item " + (activeElement == marker.id ? "active" : "")} onClick={() => { toggleActiveElement(marker.id)} }>
 			{marker.title}
 			<ul>
-				<li>**active = {activeElement} || id = {marker.id}</li>
 				<li>Local Authority: {marker.local_auth}</li>
 				<li>Completion Date: {marker.date}</li>
 				<li>GDV: £{marker.gdv}</li>
