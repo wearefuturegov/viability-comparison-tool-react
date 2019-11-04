@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./list.scss";
 
 
-const List = ({markersData, activeElement, toggleActiveElement}) => {
+const List = ({markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
 	return(
 		<div className="list-container">
 		{markersData.map(marker => (
-			<div key={marker.id} className={"list-item " + (activeElement == marker.id ? "active" : "")} onClick={() => { toggleActiveElement(marker.id)} }>
+			<div 
+				key={marker.id} 
+				className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
+				onClick={() => { toggleActiveMarker(marker.id)} }
+				onMouseEnter={() => {toggleHoverMarker(marker.id)} }
+				onMouseLeave={() => {toggleHoverMarker(0)} }
+			>
 			{marker.title}
 			<ul>
 				<li>Local Authority: {marker.local_auth}</li>

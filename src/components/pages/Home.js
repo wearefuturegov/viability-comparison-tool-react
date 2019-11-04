@@ -1,10 +1,10 @@
-import React, { useState, Component } from 'react'
-import { render } from 'react-dom';
+import React, { useState } from 'react'
 import DisplayMap from '../DisplayMap/DisplayMap'
 import List from '../../components/List/List'
 
-const Home = ({}) => {
-    const [activeElement, toggleActiveElement] = useState(0);
+const Home = () => {
+    const [activeMarker, toggleActiveMarker] = useState(0);
+    const [hoverMarker, toggleHoverMarker] = useState(0);
     const markersData = [
         { 
             id: 1,
@@ -74,10 +74,10 @@ const Home = ({}) => {
 
     return(
         <div>
-            <DisplayMap markersData={markersData} activeElement={activeElement} toggleActiveElement={toggleActiveElement} />
+            <DisplayMap markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
             
             <h3>All data:</h3>
-            <List markersData={markersData} activeElement={activeElement} toggleActiveElement={toggleActiveElement} />
+            <List markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
         </div>
     )
 }

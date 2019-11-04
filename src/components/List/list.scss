@@ -22,7 +22,7 @@
     background: #fff;
     opacity: 0.9;
 
-    &:hover {
+    &:hover, &.hovered {
         cursor: pointer;
         background: #eee;
         opacity: 1;
@@ -31,7 +31,9 @@
         margin-bottom: 0;
     }
     &.active {
-        background: #333;
+        background: #046F9E;
+        border-color: #046F9E;
         color: #fff;
+        opacity: 1;
     }
 }
