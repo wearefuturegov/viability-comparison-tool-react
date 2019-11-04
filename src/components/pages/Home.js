@@ -3,6 +3,7 @@ import DisplayMap from '../DisplayMap/DisplayMap'
 import List from '../../components/List/List'
 
 const Home = () => {
+    const [loading, setLoading] =  useState(true)
     const [activeMarker, toggleActiveMarker] = useState(0);
     const [hoverMarker, toggleHoverMarker] = useState(0);
     const [hasError, setErrors] =  useState(false)
@@ -15,7 +16,7 @@ const Home = () => {
         const res = await fetch(API);
         res
             .json()
-            .then(res => setMarkersData(res))
+            .then(res => setMarkersData(res.data), setLoading(false))
             .catch(err => setErrors(err));
     }
     
@@ -28,7 +29,7 @@ const Home = () => {
             <DisplayMap markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
             
             <h3>All data:</h3>
-            <List markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
+            <List loading={loading} markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
         </div>
     )
 }
