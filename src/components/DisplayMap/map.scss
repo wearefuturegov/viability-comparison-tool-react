@@ -1,0 +1,16 @@
+.leaflet-pane.leaflet-marker-pane img {
+    opacity: 0.9;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}

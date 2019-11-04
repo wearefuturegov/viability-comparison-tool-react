@@ -20,12 +20,18 @@
     width:    -moz-calc(100% - 20px);
     width:         calc(100% - 20px);
     background: #fff;
+    opacity: 0.9;
 
     &:hover {
         cursor: pointer;
         background: #eee;
+        opacity: 1;
     }
     &:last-child {
         margin-bottom: 0;
+    }
+    &.active {
+        background: #333;
+        color: #fff;
     }
 }
