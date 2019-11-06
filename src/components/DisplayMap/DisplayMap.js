@@ -3,8 +3,7 @@ import "./leaflet.css";
 import "./map.scss";
 import southwarkData from "./southwark.json";
 import towerHamletsData from "./towerHamlets.json";
-import { Map, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
-import L from "leaflet";
+import { Map, TileLayer, Marker, GeoJSON } from 'react-leaflet'
 import { divIcon } from 'leaflet';
 
 const developmentIcon = divIcon({
@@ -57,7 +56,7 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
 			{markersData.map(marker => (
 				<Marker 
 					key={marker.id}
-					icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker == marker.id ? developmentHoverIcon : developmentIcon))} 
+					icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker === marker.id ? developmentHoverIcon : developmentIcon))} 
 					position={[marker.attributes.latitude, marker.attributes.longitude]} 
 					onClick={() => { toggleActiveMarker(marker.id)}}
 					onMouseOver={() => { toggleHoverMarker(marker.id)} }

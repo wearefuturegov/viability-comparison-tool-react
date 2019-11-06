@@ -1,9 +1,11 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import FilterButton from './FilterButton'
 
 import HabitableModal from './modals/HabitableModal'
+
+Modal.setAppElement('#root');
 
 const FilterContainer = styled.div`
     width: calc(100% - 30px);

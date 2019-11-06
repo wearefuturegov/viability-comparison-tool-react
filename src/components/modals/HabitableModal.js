@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 
 const ModalInner = styled.div`
@@ -17,13 +17,13 @@ const HabitableModal = ({
 
     function updateMin(value) {
         setMinHabitable(value);
-        if(value != null) {
+        if(value !== null) {
             setHabitableIsFiltered(true);
         }
     }
     function updateMax(value) {
         setMaxHabitable(value);
-        if(value != null) {
+        if(value !== null) {
             setHabitableIsFiltered(true);
         }
     }
@@ -37,12 +37,12 @@ const HabitableModal = ({
 
     useEffect(() => {
         setMaxHabitable(maxTotalRooms);
-        if(document.getElementById('maxHabitableInput').value != maxTotalRooms || document.getElementById('minHabitableInput').value != 0) {
+        if(document.getElementById('maxHabitableInput').value !== maxTotalRooms || document.getElementById('minHabitableInput').value !== 0) {
             setHabitableIsFiltered(true);
         } else {
             setHabitableIsFiltered(false);
         }
-    }, []);
+    }, [maxTotalRooms, setHabitableIsFiltered, setMaxHabitable]);
 
     return (
             <ModalInner>
