@@ -1,3 +1,10 @@
 body {
     color: #292929;
 }
+.ReactModal__Overlay {
+    z-index: 9998;
+
+    .ReactModal__Content {
+        z-index: 9999;
+    }
+}

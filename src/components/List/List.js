@@ -5,15 +5,15 @@ import "./list.scss";
 const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
 	return(
 		<div className="list-container">
-			{ loading && 
+			{ loading === true ? 
 				<>
-				<div class="list-item card-loader card-loader--tabs"></div>
-				<div class="list-item card-loader card-loader--tabs"></div>
-				<div class="list-item card-loader card-loader--tabs"></div>
-				<div class="list-item card-loader card-loader--tabs"></div>
+				<div className="list-item card-loader card-loader--tabs"></div>
+				<div className="list-item card-loader card-loader--tabs"></div>
+				<div className="list-item card-loader card-loader--tabs"></div>
+				<div className="list-item card-loader card-loader--tabs"></div>
 				</>
-			}
-			{markersData.map(marker => (
+			: 
+			markersData.map(marker => (
 				<div 
 					key={marker.id} 
 					className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
@@ -41,6 +41,9 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 				</ul>
 				</div>        
 			))}
+			{ markersData.length === 0 && 
+				<p>No results found</p>
+			}
 		</div>
 	)
 }

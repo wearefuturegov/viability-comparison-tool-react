@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
+import Header from './components/Header';
+
 import Home from './components/pages/Home';
 
 
@@ -16,6 +18,7 @@ class App extends Component {
 
     return(
       <Router>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
 

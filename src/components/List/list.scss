@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     overflow: scroll;
-    width: 27%;
+    width: 27.5%;
     background: #fff;
     padding: 15px;
     height: -webkit-calc(100% - 30px);
@@ -13,7 +13,7 @@
 
 .list-item {
     margin: 0 auto;
-    border: 1px solid #a5a5a5;
+    border: 1px solid rgba(200, 200, 200, 0.8);
     padding: 10px;
     margin-bottom: 15px;
     width: -webkit-calc(100% - 20px);
@@ -43,7 +43,7 @@
 
 .card-loader {
     background-color: #fff;
-    border: 1px solid #a5a5a5;
+    border: 1px solid rgba(200, 200, 200, 0.8);
     padding: 8px;
     position: relative;
     height: 200px;
