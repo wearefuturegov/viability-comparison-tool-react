@@ -21,8 +21,8 @@ const Home = () => {
     const [markersData, setMarkersData] = useState([]);
     const API = 'https://viability-comparison-api.herokuapp.com/viability_appraisals'
 
-    const [minHabital, setMinHabital] = useState(null);
-    const [maxHabital, setMaxHabital] = useState(null);
+    const [minHabitable, setMinHabitable] = useState(null);
+    const [maxHabitable, setMaxHabitable] = useState(null);
 
     const [filters, setFilters] = useState('?')
 
@@ -34,10 +34,10 @@ const Home = () => {
         <>
             <FilterBar 
                 setFilters={setFilters}
-                minHabital={minHabital}
-                setMinHabital={setMinHabital}
-                maxHabital={maxHabital}
-                setMaxHabital={setMaxHabital}
+                minHabitable={minHabitable}
+                setMinHabitable={setMinHabitable}
+                maxHabitable={maxHabitable}
+                setMaxHabitable={setMaxHabitable}
             />
             <MapContainer>
                 <List loading={loading} markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />

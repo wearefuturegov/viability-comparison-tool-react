@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import FilterButton from './FilterButton'
 
-import HabitalModal from './modals/HabitalModal'
+import HabitableModal from './modals/HabitableModal'
 
 const FilterContainer = styled.div`
     width: 100%;
@@ -14,10 +14,10 @@ const FilterContainer = styled.div`
 
 const FilterBar = ({
     setFilters,
-    minHabital,
-    setMinHabital,
-    maxHabital,
-    setMaxHabital,
+    minHabitable,
+    setMinHabitable,
+    maxHabitable,
+    setMaxHabitable,
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [modalType, setModalType] =  useState('');
@@ -31,19 +31,19 @@ const FilterBar = ({
         setOpenModal(false);
         setModalType('');
         setFilters('?' 
-        + 'min_habitable_rooms=' + minHabital 
-        + '&max_habitable_rooms=' + maxHabital
+        + 'min_habitable_rooms=' + minHabitable 
+        + '&max_habitable_rooms=' + maxHabitable
         ) //add all filters here
     }
 
     function chooseModal(type) {
         switch(type) {
-            case 'habital':
-                return <HabitalModal 
-                    minHabital={minHabital}
-                    setMinHabital={setMinHabital}
-                    maxHabital={maxHabital}
-                    setMaxHabital={setMaxHabital}
+            case 'habitable':
+                return <HabitableModal 
+                    minHabitable={minHabitable}
+                    setMinHabitable={setMinHabitable}
+                    maxHabitable={maxHabitable}
+                    setMaxHabitable={setMaxHabitable}
                 />;
             default:
                 return <p>this would be all filters</p>;
@@ -53,7 +53,7 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <FilterButton onClick={() => handleOpenModal('habital')}>Habital rooms</FilterButton>
+                <FilterButton onClick={() => handleOpenModal('habitable')}>Habitable rooms</FilterButton>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={() => handleCloseModal()} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType) }
