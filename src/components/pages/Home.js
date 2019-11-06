@@ -17,17 +17,18 @@ const Home = () => {
     const [activeMarker, toggleActiveMarker] = useState(0);
     const [hoverMarker, toggleHoverMarker] = useState(0);
     const [hasError, setErrors] =  useState(false)
-    const [hasFetched, setFetched] =  useState(false)
     const [markersData, setMarkersData] = useState([]);
     const API = 'https://viability-comparison-api.herokuapp.com/viability_appraisals'
 
-    const [minHabitable, setMinHabitable] = useState(null);
-    const [maxHabitable, setMaxHabitable] = useState(null);
+    const [minHabitable, setMinHabitable] = useState(0);
+    const [maxHabitable, setMaxHabitable] = useState(100000);
+    const [habitableIsFiltered, setHabitableIsFiltered] = useState(false);
+	const [maxTotalRooms, setMaxTotalRooms] = useState(0);
 
     const [filters, setFilters] = useState('?')
 
     useEffect(() => {
-        fetchData(API, filters, setMarkersData, setLoading, setErrors);
+        fetchData(API, filters, setMarkersData, setLoading, setErrors)
     }, [filters]);
 
     return(
@@ -38,11 +39,30 @@ const Home = () => {
                 setMinHabitable={setMinHabitable}
                 maxHabitable={maxHabitable}
                 setMaxHabitable={setMaxHabitable}
+                habitableIsFiltered={habitableIsFiltered}
+                setHabitableIsFiltered={setHabitableIsFiltered}
+                maxTotalRooms={maxTotalRooms}
             />
             <MapContainer>
-                <List loading={loading} markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
+                <List 
+                    loading={loading} 
+                    markersData={markersData} 
+                    activeMarker={activeMarker} 
+                    toggleActiveMarker={toggleActiveMarker} 
+                    hoverMarker={hoverMarker} 
+                    toggleHoverMarker={toggleHoverMarker}
+                    hasError={hasError}
+                    maxTotalRooms={maxTotalRooms}
+                    setMaxTotalRooms={setMaxTotalRooms}
+                />
 
-                <DisplayMap markersData={markersData} activeMarker={activeMarker} toggleActiveMarker={toggleActiveMarker} hoverMarker={hoverMarker} toggleHoverMarker={toggleHoverMarker} />
+                <DisplayMap 
+                    markersData={markersData} 
+                    activeMarker={activeMarker} 
+                    toggleActiveMarker={toggleActiveMarker} 
+                    hoverMarker={hoverMarker} 
+                    toggleHoverMarker={toggleHoverMarker} 
+                />
             </MapContainer>
         </>
     )

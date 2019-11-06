@@ -21,13 +21,19 @@ const StyledFilterButton = styled.button`
         outline: none !important;
         box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
     }
+
+    &.active {
+        background: #046F9E;
+        border-color: #046F9E;
+        color: #fff;
+    }
 `
 
 
 export class FilterButton extends Component {
     render() {
         return (
-            <StyledFilterButton onClick={this.props.onClick}>{this.props.children}</StyledFilterButton>
+            <StyledFilterButton className={this.props.isActive ? "" : "active"} onClick={this.props.onClick}>{this.props.children}</StyledFilterButton>
         )
     }
 }

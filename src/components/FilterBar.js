@@ -6,18 +6,19 @@ import FilterButton from './FilterButton'
 import HabitableModal from './modals/HabitableModal'
 
 const FilterContainer = styled.div`
-    width: 100%;
+    width: calc(100% - 30px);
     border-bottom: 1px solid rgba(200, 200, 200, 0.8);
     padding: 10px 15px;
 `
-
-
 const FilterBar = ({
     setFilters,
     minHabitable,
     setMinHabitable,
     maxHabitable,
     setMaxHabitable,
+    habitableIsFiltered,
+    setHabitableIsFiltered,
+    maxTotalRooms
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [modalType, setModalType] =  useState('');
@@ -44,6 +45,9 @@ const FilterBar = ({
                     setMinHabitable={setMinHabitable}
                     maxHabitable={maxHabitable}
                     setMaxHabitable={setMaxHabitable}
+                    habitableIsFiltered={habitableIsFiltered}
+                    setHabitableIsFiltered={setHabitableIsFiltered}
+                    maxTotalRooms={maxTotalRooms}
                 />;
             default:
                 return <p>this would be all filters</p>;
@@ -53,11 +57,11 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <FilterButton onClick={() => handleOpenModal('habitable')}>Habitable rooms</FilterButton>
+                <FilterButton isActive={!habitableIsFiltered} onClick={() => handleOpenModal('habitable')}>Habitable rooms</FilterButton>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={() => handleCloseModal()} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType) }
-                <button onClick={() => handleCloseModal()}>Close Modal</button>
+                <button onClick={() => handleCloseModal()}>Save</button>
             </Modal>
         </>
     )
