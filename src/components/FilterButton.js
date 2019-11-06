@@ -7,6 +7,7 @@ const StyledFilterButton = styled.button`
     font-size: 15px;
     margin: 0;
     margin-right: 15px;
+    padding: 3px 10px 4px 10px;
 
     &:hover {
         cursor: pointer;

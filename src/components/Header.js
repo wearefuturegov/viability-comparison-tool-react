@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledHeader = styled.div`
     width: 100%;
     background: #046F9E;
-    height: 45px;
+    height: 51px;
     z-index: 999;
 `
 
