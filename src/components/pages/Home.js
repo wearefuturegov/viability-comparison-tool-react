@@ -34,6 +34,7 @@ const Home = () => {
     return(
         <>
             <FilterBar 
+                toggleActiveMarker={toggleActiveMarker}
                 setFilters={setFilters}
                 minHabitable={minHabitable}
                 setMinHabitable={setMinHabitable}

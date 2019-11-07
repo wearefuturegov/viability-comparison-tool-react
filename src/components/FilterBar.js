@@ -14,6 +14,7 @@ const FilterContainer = styled.div`
     padding: 10px 15px;
 `
 const FilterBar = ({
+    toggleActiveMarker,
     setFilters,
     minHabitable,
     setMinHabitable,
@@ -64,6 +65,7 @@ const FilterBar = ({
         switch(type) {
             case 'habitable':
                 return <HabitableModal 
+                    toggleActiveMarker={toggleActiveMarker}
                     handleCloseModal={closeFunction}
                     minHabitable={minHabitable}
                     setMinHabitable={setMinHabitable}

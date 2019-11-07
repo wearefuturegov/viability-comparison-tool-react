@@ -15,6 +15,7 @@ const ButtonBar = styled.div`
 `
 
 const HabitableModal = ({
+    toggleActiveMarker,
     handleCloseModal,
     minHabitable,
     setMinHabitable,
@@ -30,12 +31,14 @@ const HabitableModal = ({
         setMinHabitable(value);
         if(value !== null) {
             setHabitableIsFiltered(true);
+            toggleActiveMarker(0);
         }
     }
     function updateMax(value) {
         setMaxHabitable(value);
         if(value !== null) {
             setHabitableIsFiltered(true);
+            toggleActiveMarker(0);
         }
     }
     function handleClear() {
