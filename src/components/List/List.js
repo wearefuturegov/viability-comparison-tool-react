@@ -4,7 +4,6 @@ import * as Scroll from 'react-scroll';
 
 
 const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms, setMaxHabitable}) => {	
-	var Element = Scroll.Element;
 	var scroller = Scroll.scroller;
 
 	const setBaseNumbers = (rooms) => {
@@ -13,10 +12,8 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 			setMaxHabitable(Math.ceil(rooms/100)*100);
 		}
 	}
-	const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop); 
 
 	useEffect(() => {
-		console.log('Selected property changed to ' + activeMarker);
 		if(activeMarker !== 0) {
 			scroller.scrollTo('scroll'+activeMarker, {
 				duration: 500,
@@ -25,7 +22,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 				offset: -50
 			});
 		}
-    }, [activeMarker]);
+    }, [activeMarker, scroller]);
 
 	return(
 		<ul className="list-container" id="sidebar">

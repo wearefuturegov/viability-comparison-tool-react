@@ -50,7 +50,7 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
 			const currentActive = markersData.find(e => e.id === activeMarker);
 			setPosition([currentActive.attributes.latitude, currentActive.attributes.longitude]);
 		}
-    }, [activeMarker]);
+    }, [activeMarker, markersData]);
 	  		
 	return (
 		<Map center={position} zoom={13}>
