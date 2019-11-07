@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './filter-styles.scss'
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import FilterButton from './FilterButton';
+import Button from './Button';
 
 import HabitableModal from './modals/HabitableModal'
 
@@ -82,7 +82,7 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <FilterButton isActive={!habitableIsFiltered} onClick={() => handleOpenModal('habitable')}>{habitableButtonText}</FilterButton>
+                <Button type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} onClick={() => handleOpenModal('habitable')}>{habitableButtonText}</Button>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType, handleCloseModal) }

@@ -1,11 +1,15 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import "./list.scss";
 import * as Scroll from 'react-scroll';
+import RoomModal from 'react-modal';
+import Button from '../Button';
 
+RoomModal.setAppElement('#root');
 
 const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms, setMaxHabitable}) => {	
 	var scroller = Scroll.scroller;
-
+    const [openRoomModal, setOpenRoomModal] =  useState(false);
+	
 	const setBaseNumbers = (rooms) => {
 		if(maxTotalRooms < rooms) {
 			setMaxTotalRooms(Math.ceil(rooms/100)*100);
@@ -44,8 +48,9 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 					onMouseLeave={() => {toggleHoverMarker(0)} }
 				>
 					{setBaseNumbers(marker.attributes.habitable_rooms)}
-					{marker.attributes.name}
-					<ul>
+					<h3>{marker.attributes.name}</h3>
+					<Button>View property</Button>
+					{/* <ul>
 						<li>Local Authority: {marker.attributes.local_authority}</li>
 						<li>Date submitted: {marker.attributes.date_submitted}</li>
 						<li>GDV: £{marker.attributes.gross_development_value_pence/100}</li>
@@ -61,7 +66,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 						<li>Residential Units: {marker.attributes.residential_units}</li>
 						<li>Habitable Rooms: {marker.attributes.habitable_rooms}</li>
 						<li>Commercial Area: {marker.attributes.commercial_area_square_centimetres/100}m&sup2;</li>
-					</ul>
+					</ul> */}
 				</li>        
 			))}
 			{ markersData.length === 0 && 

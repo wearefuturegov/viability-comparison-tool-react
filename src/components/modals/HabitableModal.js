@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
-import PrimaryButton from '../PrimaryButton';
+import Button from '../Button';
 
 const ModalInner = styled.div`
     width: 100%;
@@ -67,7 +67,7 @@ const HabitableModal = ({
 
                 <ButtonBar>
                     <button className="clear_button" disabled={!habitableIsFiltered} onClick={() => handleClear()}>Clear</button>
-                    <PrimaryButton onClick={handleCloseModal}>Save</PrimaryButton>
+                    <Button type="primary" onClick={handleCloseModal}>Save</Button>
                 </ButtonBar>
 
             </ModalInner>
