@@ -46,7 +46,6 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
 	};
 
 	useEffect(() => {
-		console.log('Selected property changed to ' + activeMarker);
 		if(activeMarker !== 0) {
 			const currentActive = markersData.find(e => e.id === activeMarker);
 			setPosition([currentActive.attributes.latitude, currentActive.attributes.longitude]);

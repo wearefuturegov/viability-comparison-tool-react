@@ -1,17 +1,34 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./list.scss";
+import * as Scroll from 'react-scroll';
 
 
 const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms, setMaxHabitable}) => {	
-	const test = (rooms) => {
+	var Element = Scroll.Element;
+	var scroller = Scroll.scroller;
+
+	const setBaseNumbers = (rooms) => {
 		if(maxTotalRooms < rooms) {
 			setMaxTotalRooms(Math.ceil(rooms/100)*100);
 			setMaxHabitable(Math.ceil(rooms/100)*100);
 		}
 	}
-	
+	const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop); 
+
+	useEffect(() => {
+		console.log('Selected property changed to ' + activeMarker);
+		if(activeMarker !== 0) {
+			scroller.scrollTo('scroll'+activeMarker, {
+				duration: 500,
+				smooth: "linear",
+				containerId: 'sidebar',
+				offset: -50
+			});
+		}
+    }, [activeMarker]);
+
 	return(
-		<div className="list-container">
+		<ul className="list-container" id="sidebar">
 			{ loading === true ? 
 				<>
 				<div className="list-item card-loader card-loader--tabs"></div>
@@ -21,14 +38,15 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 				</>
 			: 
 			markersData.map(marker => (
-				<div 
+				<li 
 					key={marker.id} 
+					name={'scroll'+marker.id}
 					className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
 					onClick={() => { toggleActiveMarker(marker.id)} }
 					onMouseEnter={() => {toggleHoverMarker(marker.id)} }
 					onMouseLeave={() => {toggleHoverMarker(0)} }
 				>
-					{test(marker.attributes.habitable_rooms)}
+					{setBaseNumbers(marker.attributes.habitable_rooms)}
 					{marker.attributes.name}
 					<ul>
 						<li>Local Authority: {marker.attributes.local_authority}</li>
@@ -47,7 +65,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 						<li>Habitable Rooms: {marker.attributes.habitable_rooms}</li>
 						<li>Commercial Area: {marker.attributes.commercial_area_square_centimetres/100}m&sup2;</li>
 					</ul>
-				</div>        
+				</li>        
 			))}
 			{ markersData.length === 0 && 
 				<p>No results found</p>
@@ -55,7 +73,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 			{ hasError && 
 				<p>Sorry there was an error fetching the results, please try again.</p>
 			}
-		</div>
+		</ul>
 	)
 }
 
