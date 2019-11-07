@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./leaflet.css";
 import "./map.scss";
 import southwarkData from "./southwark.json";
@@ -31,7 +31,7 @@ const developmentActiveIcon = divIcon({
 });
 
 const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
-	const position = [51.505, -0.09]
+	const [position, setPosition] = useState([51.505, -0.09]);
 	const southwarkStyle = {
         color: "#256f8a",
         weight: 2,
@@ -44,6 +44,14 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
         opacity: 1,
         fillOpacity: 0.3
 	};
+
+	useEffect(() => {
+		console.log('Selected property changed to ' + activeMarker);
+		if(activeMarker !== 0) {
+			const currentActive = markersData.find(e => e.id === activeMarker);
+			setPosition([currentActive.attributes.latitude, currentActive.attributes.longitude]);
+		}
+    }, [activeMarker]);
 	  		
 	return (
 		<Map center={position} zoom={13}>
