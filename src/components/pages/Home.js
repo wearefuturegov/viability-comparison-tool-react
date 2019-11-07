@@ -54,6 +54,7 @@ const Home = () => {
                     hasError={hasError}
                     maxTotalRooms={maxTotalRooms}
                     setMaxTotalRooms={setMaxTotalRooms}
+                    setMaxHabitable={setMaxHabitable}
                 />
 
                 <DisplayMap 

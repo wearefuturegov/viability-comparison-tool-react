@@ -2,10 +2,11 @@ import React from "react";
 import "./list.scss";
 
 
-const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms}) => {	
+const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms, setMaxHabitable}) => {	
 	const test = (rooms) => {
 		if(maxTotalRooms < rooms) {
 			setMaxTotalRooms(Math.ceil(rooms/100)*100);
+			setMaxHabitable(Math.ceil(rooms/100)*100);
 		}
 	}
 	

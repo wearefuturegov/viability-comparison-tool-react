@@ -1,0 +1,66 @@
+.ReactModal__Overlay {
+    z-index: 9998;
+
+    .ReactModal__Content {
+        z-index: 9999;
+        top: 88px !important;
+        left: 15px !important;
+        width: 350px;
+        height: 200px;
+
+        label {
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            margin-right: 25px;
+        }
+        input {
+            display: block;
+            padding: 5px 8px;
+            border: 1px solid rgba(200, 200, 200, 0.8);
+            border-radius: 3px;
+            font-size: 18px;
+            margin-top: 5px;
+
+            &:focus {
+                outline: none !important;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+            }
+            &:hover {
+                border: 1px solid rgb(180, 180, 180);
+            }
+        }
+        input[type=number] {
+            width: 80px;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.clear_button {
+    background:#fff;
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 3px 10px 4px 10px;
+    cursor: pointer;
+    opacity: 0.8;
+    float: left;
+
+    &:focus {
+        outline: none !important;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+        border-radius: 3px;
+    }
+    &:hover {
+        opacity: 1;
+    }
+    &:disabled {
+        cursor: no-drop;
+        opacity: 1;
+    }
+}

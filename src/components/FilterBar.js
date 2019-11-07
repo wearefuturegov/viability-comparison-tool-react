@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import './filter-styles.scss'
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import FilterButton from './FilterButton'
+import FilterButton from './FilterButton';
 
 import HabitableModal from './modals/HabitableModal'
 
@@ -24,25 +25,46 @@ const FilterBar = ({
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [modalType, setModalType] =  useState('');
+
+    const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     
     function handleOpenModal(type) {
         setOpenModal(true);
         setModalType(type);
     }
   
-    function handleCloseModal() {
+    const handleCloseModal = () => {
         setOpenModal(false);
         setModalType('');
+        
+        updateFilterText();
         setFilters('?' 
         + 'min_habitable_rooms=' + minHabitable 
         + '&max_habitable_rooms=' + maxHabitable
-        ) //add all filters here
+        ) //add all other filters here
     }
 
-    function chooseModal(type) {
+    function updateFilterText() {
+        if(habitableIsFiltered) {
+            if (minHabitable !== 0) {
+                if (maxHabitable !== maxTotalRooms) {
+                    setHabitableButtonText(minHabitable + ' - ' + maxHabitable);
+                } else {
+                    setHabitableButtonText(minHabitable + '+ habitable rooms');
+                }
+            } else {
+                setHabitableButtonText('Up to ' + maxHabitable + ' habitable rooms');
+            }
+        } else {
+            setHabitableButtonText('Habitable rooms');
+        }
+    }
+
+    function chooseModal(type, closeFunction) {
         switch(type) {
             case 'habitable':
                 return <HabitableModal 
+                    handleCloseModal={closeFunction}
                     minHabitable={minHabitable}
                     setMinHabitable={setMinHabitable}
                     maxHabitable={maxHabitable}
@@ -50,6 +72,7 @@ const FilterBar = ({
                     habitableIsFiltered={habitableIsFiltered}
                     setHabitableIsFiltered={setHabitableIsFiltered}
                     maxTotalRooms={maxTotalRooms}
+                    setHabitableButtonText={setHabitableButtonText}
                 />;
             default:
                 return <p>this would be all filters</p>;
@@ -59,11 +82,10 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <FilterButton isActive={!habitableIsFiltered} onClick={() => handleOpenModal('habitable')}>Habitable rooms</FilterButton>
+                <FilterButton isActive={!habitableIsFiltered} onClick={() => handleOpenModal('habitable')}>{habitableButtonText}</FilterButton>
             </FilterContainer>
-            <Modal isOpen={openModal} onRequestClose={() => handleCloseModal()} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
-                { chooseModal(modalType) }
-                <button onClick={() => handleCloseModal()}>Save</button>
+            <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
+                { chooseModal(modalType, handleCloseModal) }
             </Modal>
         </>
     )

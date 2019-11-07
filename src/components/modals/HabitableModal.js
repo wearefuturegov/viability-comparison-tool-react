@@ -1,18 +1,29 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
+import PrimaryButton from '../PrimaryButton';
 
 const ModalInner = styled.div`
     width: 100%;
 `
+const ButtonBar = styled.div`
+    width: calc(100% - 40px);
+    position: absolute;
+    bottom: 20px; 
+    padding-top: 15px;
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
+    text-align: right;
+`
 
 const HabitableModal = ({
+    handleCloseModal,
     minHabitable,
     setMinHabitable,
     maxHabitable,
     setMaxHabitable,
     habitableIsFiltered,
     setHabitableIsFiltered,
-    maxTotalRooms
+    maxTotalRooms,
+    setHabitableButtonText
 }) => {
 
     function updateMin(value) {
@@ -33,29 +44,32 @@ const HabitableModal = ({
         setMaxHabitable(maxTotalRooms);
         document.getElementById('minHabitableInput').value = 0;
         document.getElementById('maxHabitableInput').value = maxTotalRooms;
+        setHabitableButtonText('Habitable rooms');
     }
 
     useEffect(() => {
-        setMaxHabitable(maxTotalRooms);
-        if(document.getElementById('maxHabitableInput').value !== maxTotalRooms || document.getElementById('minHabitableInput').value !== 0) {
-            setHabitableIsFiltered(true);
-        } else {
-            setHabitableIsFiltered(false);
+        if(document.getElementById('maxHabitableInput').value === maxTotalRooms && document.getElementById('minHabitableInput').value === 0) {
+            setMaxHabitable(maxTotalRooms);
         }
-    }, [maxTotalRooms, setHabitableIsFiltered, setMaxHabitable]);
-
+    }, [maxTotalRooms, setMaxHabitable, setHabitableButtonText]);
+    
     return (
             <ModalInner>
+                <h2>Number of habitable rooms</h2>
                 <label>
-                    Min number of habitable rooms
-                    <input name="minHabitableInput" id="minHabitableInput" type="number" step="1" max={maxTotalRooms} value={minHabitable} onChange={e => updateMin(e.target.value)} />
+                    Min
+                    <input name="minHabitableInput" id="minHabitableInput" type="number" step="1" min={0} max={maxTotalRooms} value={minHabitable} onChange={e => updateMin(e.target.value)} />
                 </label>
                 <label>
-                    Max number of habitable rooms
+                    Max
                     <input name="maxHabitableInput" id="maxHabitableInput" type="number" step="1" max={maxTotalRooms} value={maxHabitable} onChange={e => updateMax(e.target.value)} />
                 </label>
 
-                <button className="clear_button" disabled={!habitableIsFiltered} onClick={() => handleClear()}>Clear</button>
+                <ButtonBar>
+                    <button className="clear_button" disabled={!habitableIsFiltered} onClick={() => handleClear()}>Clear</button>
+                    <PrimaryButton onClick={handleCloseModal}>Save</PrimaryButton>
+                </ButtonBar>
+
             </ModalInner>
     )
 }
