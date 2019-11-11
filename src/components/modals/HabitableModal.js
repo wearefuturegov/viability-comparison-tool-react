@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Button from '../Button';
 
@@ -26,7 +26,6 @@ const HabitableModal = ({
     maxTotalRooms,
     setHabitableButtonText
 }) => {
-
     function updateMin(value) {
         setMinHabitable(value);
         if(value !== null) {

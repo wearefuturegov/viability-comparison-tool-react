@@ -45,13 +45,20 @@ const StyledButton = styled.button`
             border-color: #046F9E;
         }
     }
+
+    &:disabled, &:disabled:hover {
+        background: #eee;
+        border: 1px solid #eee;
+        color: #121212;
+        cursor: no-drop;
+    }
 `
 
 
 export class Button extends Component {
     render() {
         return (
-            <StyledButton className={this.props.type} onClick={this.props.onClick}>{this.props.children}</StyledButton>
+            <StyledButton disabled={this.props.disabled} className={this.props.type} onClick={this.props.onClick}>{this.props.children}</StyledButton>
         )
     }
 }

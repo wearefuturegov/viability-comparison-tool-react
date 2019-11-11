@@ -13,11 +13,11 @@ const MapContainer = styled.div`
 
 
 const Home = () => {
-    const [loading, setLoading] =  useState(true)
     const [activeMarker, toggleActiveMarker] = useState(0);
+    const [markersData, setMarkersData] = useState([]);
+    const [loading, setLoading] =  useState(true)
     const [hoverMarker, toggleHoverMarker] = useState(0);
     const [hasError, setErrors] =  useState(false)
-    const [markersData, setMarkersData] = useState([]);
     const API = 'https://viability-comparison-api.herokuapp.com/viability_appraisals'
 
     const [minHabitable, setMinHabitable] = useState(0);

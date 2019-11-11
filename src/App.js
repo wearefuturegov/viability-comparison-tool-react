@@ -5,7 +5,7 @@ import './App.scss';
 import Header from './components/Header';
 
 import Home from './components/pages/Home';
-
+import ViabilityAppraisal from './components/pages/ViabilityAppraisal';
 
 class App extends Component {
   render() {
@@ -21,6 +21,7 @@ class App extends Component {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/viability_appraisals/:id" exact component={ViabilityAppraisal}></Route>
 
           <Route component={NotFound} />
         </Switch>
