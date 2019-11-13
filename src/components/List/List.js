@@ -46,8 +46,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 				>
 					{setBaseNumbers(marker.attributes.habitable_rooms)}
 					<h3>{marker.attributes.name}</h3>
-					<Link to={"/viability_appraisals/"+marker.id}>View viability apprasial</Link>
-					{/* <Button onClick={() => handleButtonClick(marker.id)}>View viability apprasial</Button> */}
+					<Link tabindex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
 				</li>        
 			))}
 			{ markersData.length === 0 && 
