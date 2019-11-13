@@ -11,7 +11,7 @@ Modal.setAppElement('#root');
 const FilterContainer = styled.div`
     width: calc(100% - 30px);
     border-bottom: 1px solid rgba(200, 200, 200, 0.8);
-    padding: 10px 15px;
+    padding: 9px 15px;
 `
 const FilterBar = ({
     toggleActiveMarker,

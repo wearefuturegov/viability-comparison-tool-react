@@ -7,14 +7,15 @@ const StyledButton = styled.button`
     margin: 0;
     padding: 3px 10px 4px 10px;
     background: #fff;
-    border: 1px solid rgba(200, 200, 200, 0.8);
+    border: 2px solid #046F9E;
 
     &:hover {
         cursor: pointer;
-        border: 1px solid rgb(180, 180, 180);
+        border: 2px solid #046F9E;
+        background: #eee;
     }
     &:active {
-        background: #eee;
+        background: #cecece;
     }
     &:focus {
         outline: none !important;

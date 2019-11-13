@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
+import BackLink from '../BackLink'
+import SingleMap from '../DisplayMap/SingleMap'
 
 const SingleViability = styled.div`
     width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
 `
+
 
 const ViabilityAppraisal = () => {
     const [chosenDevelopment, setChosenDevelopment] = useState();
@@ -16,6 +22,7 @@ const ViabilityAppraisal = () => {
     
     return (
         <SingleViability>
+            <BackLink />
             { loading === true ? (
                 <p>Loading...</p>
             ) : (
@@ -40,6 +47,7 @@ const ViabilityAppraisal = () => {
                         <li>Habitable Rooms: {chosenDevelopment.attributes.habitable_rooms}</li>
                         <li>Commercial Area: {chosenDevelopment.attributes.commercial_area_square_centimetres/100}m&sup2;</li>
                     </ul> 
+                    <SingleMap lat={chosenDevelopment.attributes.latitude} long={chosenDevelopment.attributes.longitude} />
                     </>
                 }
                 </>
