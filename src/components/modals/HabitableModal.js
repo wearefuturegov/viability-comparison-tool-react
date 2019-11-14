@@ -19,7 +19,9 @@ const HabitableModal = ({
     handleCloseModal,
     minHabitable,
     setMinHabitable,
+    setMinHabitableURL,
     maxHabitable,
+    setMaxHabitableURL,
     setMaxHabitable,
     habitableIsFiltered,
     setHabitableIsFiltered,
@@ -28,6 +30,7 @@ const HabitableModal = ({
 }) => {
     function updateMin(value) {
         setMinHabitable(value);
+        setMinHabitableURL(value);
         if(value !== null) {
             setHabitableIsFiltered(true);
             toggleActiveMarker(0);
@@ -35,18 +38,21 @@ const HabitableModal = ({
     }
     function updateMax(value) {
         setMaxHabitable(value);
+        setMaxHabitableURL(value);
         if(value !== null) {
             setHabitableIsFiltered(true);
             toggleActiveMarker(0);
         }
     }
     function handleClear() {
-        setHabitableIsFiltered(false);
-        setMinHabitable(0);
-        setMaxHabitable(maxTotalRooms);
         document.getElementById('minHabitableInput').value = 0;
         document.getElementById('maxHabitableInput').value = maxTotalRooms;
         setHabitableButtonText('Habitable rooms');
+        
+        updateMin(0);
+        updateMax(maxTotalRooms);
+        setMinHabitableURL(0);
+        setHabitableIsFiltered(false);
     }
 
     useEffect(() => {
@@ -64,7 +70,7 @@ const HabitableModal = ({
                 </label>
                 <label>
                     Max
-                    <input name="maxHabitableInput" id="maxHabitableInput" type="number" step="1" max={maxTotalRooms} value={maxHabitable} onChange={e => updateMax(e.target.value)} />
+                    <input name="maxHabitableInput" id="maxHabitableInput" type="number" step="1" min={0} max={maxTotalRooms} value={maxHabitable} onChange={e => updateMax(e.target.value)} />
                 </label>
 
                 <ButtonBar>

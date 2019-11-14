@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './filter-styles.scss'
 import styled from 'styled-components';
 import Modal from 'react-modal';
@@ -18,17 +18,34 @@ const FilterBar = ({
     setFilters,
     minHabitable,
     setMinHabitable,
+    setMinHabitableURL,
     maxHabitable,
+    setMaxHabitableURL,
     setMaxHabitable,
     habitableIsFiltered,
     setHabitableIsFiltered,
-    maxTotalRooms
+    maxTotalRooms,
+    minHabitableURL,
+    maxHabitableURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [modalType, setModalType] =  useState('');
 
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     
+    useEffect(() => {
+        if(maxHabitableURL === undefined && minHabitableURL === undefined) {
+            setHabitableIsFiltered(false);
+        } else {
+            if(maxHabitableURL !== maxTotalRooms || minHabitableURL !== 0) {
+                setHabitableIsFiltered(true);
+                handleCloseModal();
+            }
+        }
+        
+        updateFilterText();
+    }, [])
+
     function handleOpenModal(type) {
         setOpenModal(true);
         setModalType(type);
@@ -43,18 +60,26 @@ const FilterBar = ({
         + 'min_habitable_rooms=' + minHabitable 
         + '&max_habitable_rooms=' + maxHabitable
         ) //add all other filters here
+
+
+        setMinHabitableURL(minHabitable);
+        setMaxHabitableURL(maxHabitable);
     }
 
     function updateFilterText() {
         if(habitableIsFiltered) {
             if (minHabitable !== 0) {
                 if (maxHabitable !== maxTotalRooms) {
-                    setHabitableButtonText(minHabitable + ' - ' + maxHabitable);
+                    setHabitableButtonText(minHabitable + ' - ' + maxHabitable + ' habitable rooms');
                 } else {
                     setHabitableButtonText(minHabitable + '+ habitable rooms');
                 }
             } else {
-                setHabitableButtonText('Up to ' + maxHabitable + ' habitable rooms');
+                if(maxTotalRooms === maxHabitable) {
+                    setHabitableButtonText('Habitable rooms');
+                } else {
+                    setHabitableButtonText('Up to ' + maxHabitable + ' habitable rooms');
+                }
             }
         } else {
             setHabitableButtonText('Habitable rooms');
@@ -69,8 +94,10 @@ const FilterBar = ({
                     handleCloseModal={closeFunction}
                     minHabitable={minHabitable}
                     setMinHabitable={setMinHabitable}
+                    setMinHabitableURL={setMinHabitableURL}
                     maxHabitable={maxHabitable}
                     setMaxHabitable={setMaxHabitable}
+                    setMaxHabitableURL={setMaxHabitableURL}
                     habitableIsFiltered={habitableIsFiltered}
                     setHabitableIsFiltered={setHabitableIsFiltered}
                     maxTotalRooms={maxTotalRooms}

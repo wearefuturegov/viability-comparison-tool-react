@@ -1,16 +1,29 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import { Link } from 'react-router-dom'
 import "./list.scss";
 import * as Scroll from 'react-scroll';
 import Button from '../Button';
 
-const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, hasError, maxTotalRooms, setMaxTotalRooms, setMaxHabitable}) => {	
+const List = ({
+		loading, 
+		markersData, 
+		activeMarker, 
+		toggleActiveMarker, 
+		hoverMarker, 
+		toggleHoverMarker, 
+		hasError, 
+		maxTotalRooms, 
+		setMaxTotalRooms, 
+		setMaxHabitable, 
+		maxHabitableURL
+	}) => {	
+
 	var scroller = Scroll.scroller;
 
 	const setBaseNumbers = (rooms) => {
 		if(maxTotalRooms < rooms) {
 			setMaxTotalRooms(Math.ceil(rooms/100)*100);
-			setMaxHabitable(Math.ceil(rooms/100)*100);
+			setMaxHabitable(maxHabitableURL ? maxHabitableURL : Math.ceil(rooms/100)*100);
 		}
 	}
 
@@ -46,7 +59,7 @@ const List = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMark
 				>
 					{setBaseNumbers(marker.attributes.habitable_rooms)}
 					<h3>{marker.attributes.name}</h3>
-					<Link tabindex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
+					<Link tabIndex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
 				</li>        
 			))}
 			{ markersData.length === 0 && 
