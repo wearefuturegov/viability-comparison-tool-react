@@ -29,22 +29,60 @@ const FilterBar = ({
     maxHabitableURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
+    const [setupFilters, changeSetupFilters] =  useState(false);
     const [modalType, setModalType] =  useState('');
 
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     
+
     useEffect(() => {
-        if(maxHabitableURL === undefined && minHabitableURL === undefined) {
+        if((maxHabitableURL === undefined && minHabitableURL === undefined) || (maxHabitableURL === maxTotalRooms && minHabitableURL === 0)) {
             setHabitableIsFiltered(false);
         } else {
             if(maxHabitableURL !== maxTotalRooms || minHabitableURL !== 0) {
                 setHabitableIsFiltered(true);
-                handleCloseModal();
+                setMinHabitableURL(minHabitable);
+                setMaxHabitableURL(maxHabitable);
+
+                setFilters('?' 
+                + 'min_habitable_rooms=' + minHabitable 
+                + '&max_habitable_rooms=' + maxHabitable
+                ) //add all other filters here
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setupFilters]);
+
+
+
+    useEffect(() => {
+        function setupFilterText() {
+            if(habitableIsFiltered) {
+                if (minHabitable !== 0) {
+                    if (maxHabitable !== maxTotalRooms) {
+                        setHabitableButtonText(minHabitable + ' - ' + maxHabitable + ' habitable rooms');
+                    } else {
+                        setHabitableButtonText(minHabitable + '+ habitable rooms');
+                    }
+                } else {
+                    if(maxTotalRooms === maxHabitable) {
+                        setHabitableIsFiltered(false);
+                        setHabitableButtonText('Habitable rooms');
+                    } else {
+                        setHabitableButtonText('Up to ' + maxHabitable + ' habitable rooms');
+                    }
+                }
+            } else {
+                setHabitableButtonText('Habitable rooms');
             }
         }
         
-        updateFilterText();
-    }, [])
+        setupFilterText();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [habitableIsFiltered, maxTotalRooms, setupFilters, setHabitableIsFiltered]);
+
+
+
 
     function handleOpenModal(type) {
         setOpenModal(true);
@@ -54,37 +92,11 @@ const FilterBar = ({
     const handleCloseModal = () => {
         setOpenModal(false);
         setModalType('');
-        
-        updateFilterText();
-        setFilters('?' 
-        + 'min_habitable_rooms=' + minHabitable 
-        + '&max_habitable_rooms=' + maxHabitable
-        ) //add all other filters here
 
-
-        setMinHabitableURL(minHabitable);
-        setMaxHabitableURL(maxHabitable);
+        changeSetupFilters(setupFilters ? false : true);
     }
 
-    function updateFilterText() {
-        if(habitableIsFiltered) {
-            if (minHabitable !== 0) {
-                if (maxHabitable !== maxTotalRooms) {
-                    setHabitableButtonText(minHabitable + ' - ' + maxHabitable + ' habitable rooms');
-                } else {
-                    setHabitableButtonText(minHabitable + '+ habitable rooms');
-                }
-            } else {
-                if(maxTotalRooms === maxHabitable) {
-                    setHabitableButtonText('Habitable rooms');
-                } else {
-                    setHabitableButtonText('Up to ' + maxHabitable + ' habitable rooms');
-                }
-            }
-        } else {
-            setHabitableButtonText('Habitable rooms');
-        }
-    }
+
 
     function chooseModal(type, closeFunction) {
         switch(type) {

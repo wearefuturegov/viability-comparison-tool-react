@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./leaflet.css";
 import "./map.scss";
 import { Map, TileLayer, Marker } from 'react-leaflet'
