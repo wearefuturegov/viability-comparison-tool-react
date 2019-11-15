@@ -25,7 +25,7 @@ const HabitableModal = ({
     setMaxHabitable,
     habitableIsFiltered,
     setHabitableIsFiltered,
-    maxTotalRooms,
+    maxTotalHabitable,
     setHabitableButtonText
 }) => {
     function updateMin(value) {
@@ -44,29 +44,29 @@ const HabitableModal = ({
     }
     function handleClear() {
         document.getElementById('minHabitableInput').value = 0;
-        document.getElementById('maxHabitableInput').value = maxTotalRooms;
+        document.getElementById('maxHabitableInput').value = maxTotalHabitable;
         
         updateMin(0);
-        updateMax(maxTotalRooms);
+        updateMax(maxTotalHabitable);
         setMinHabitableURL(0);
     }
 
     useEffect(() => {
-        if(document.getElementById('maxHabitableInput').value === maxTotalRooms && document.getElementById('minHabitableInput').value === 0) {
-            setMaxHabitable(maxTotalRooms);
+        if(document.getElementById('maxHabitableInput').value === maxTotalHabitable && document.getElementById('minHabitableInput').value === 0) {
+            setMaxHabitable(maxTotalHabitable);
         }
-    }, [maxTotalRooms, setMaxHabitable, setHabitableButtonText]);
+    }, [maxTotalHabitable, setMaxHabitable, setHabitableButtonText]);
     
     return (
             <ModalInner>
                 <h2>Number of habitable rooms</h2>
                 <label>
                     Min
-                    <input name="minHabitableInput" id="minHabitableInput" type="number" step="1" min={0} max={maxTotalRooms} value={minHabitable} onChange={e => updateMin(e.target.value)} />
+                    <input name="minHabitableInput" id="minHabitableInput" type="number" step="1" min={0} max={maxTotalHabitable} value={minHabitable} onChange={e => updateMin(e.target.value)} />
                 </label>
                 <label>
                     Max
-                    <input name="maxHabitableInput" id="maxHabitableInput" type="number" step="1" min={0} max={maxTotalRooms} value={maxHabitable} onChange={e => updateMax(e.target.value)} />
+                    <input name="maxHabitableInput" id="maxHabitableInput" type="number" step="1" min={0} max={maxTotalHabitable} value={maxHabitable} onChange={e => updateMax(e.target.value)} />
                 </label>
 
                 <ButtonBar>

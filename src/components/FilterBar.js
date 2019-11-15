@@ -24,7 +24,7 @@ const FilterBar = ({
     setMaxHabitable,
     habitableIsFiltered,
     setHabitableIsFiltered,
-    maxTotalRooms,
+    maxTotalHabitable,
     minHabitableURL,
     maxHabitableURL
 }) => {
@@ -36,10 +36,10 @@ const FilterBar = ({
     
 
     useEffect(() => {
-        if((maxHabitableURL === undefined && minHabitableURL === undefined) || (maxHabitableURL === maxTotalRooms && minHabitableURL === 0)) {
+        if((maxHabitableURL === undefined && minHabitableURL === undefined) || (maxHabitableURL === maxTotalHabitable && minHabitableURL === 0)) {
             setHabitableIsFiltered(false);
         } else {
-            if(maxHabitableURL !== maxTotalRooms || minHabitableURL !== 0) {
+            if(maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0) {
                 setHabitableIsFiltered(true);
                 setMinHabitableURL(minHabitable);
                 setMaxHabitableURL(maxHabitable);
@@ -59,13 +59,13 @@ const FilterBar = ({
         function setupFilterText() {
             if(habitableIsFiltered) {
                 if (minHabitable !== 0) {
-                    if (maxHabitable !== maxTotalRooms) {
+                    if (maxHabitable !== maxTotalHabitable) {
                         setHabitableButtonText(minHabitable + ' - ' + maxHabitable + ' habitable rooms');
                     } else {
                         setHabitableButtonText(minHabitable + '+ habitable rooms');
                     }
                 } else {
-                    if(maxTotalRooms === maxHabitable) {
+                    if(maxTotalHabitable === maxHabitable) {
                         setHabitableIsFiltered(false);
                         setHabitableButtonText('Habitable rooms');
                     } else {
@@ -79,7 +79,7 @@ const FilterBar = ({
         
         setupFilterText();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [habitableIsFiltered, maxTotalRooms, setupFilters, setHabitableIsFiltered]);
+    }, [habitableIsFiltered, maxTotalHabitable, setupFilters, setHabitableIsFiltered]);
 
 
 
@@ -112,7 +112,7 @@ const FilterBar = ({
                     setMaxHabitableURL={setMaxHabitableURL}
                     habitableIsFiltered={habitableIsFiltered}
                     setHabitableIsFiltered={setHabitableIsFiltered}
-                    maxTotalRooms={maxTotalRooms}
+                    maxTotalHabitable={maxTotalHabitable}
                     setHabitableButtonText={setHabitableButtonText}
                 />;
             default:

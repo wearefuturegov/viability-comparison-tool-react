@@ -12,8 +12,8 @@ const List = ({
 		hoverMarker, 
 		toggleHoverMarker, 
 		hasError, 
-		maxTotalRooms, 
-		setMaxTotalRooms, 
+		maxTotalHabitable, 
+		setMaxTotalHabitable, 
 		setMaxHabitable, 
 		maxHabitableURL
 	}) => {	
@@ -21,8 +21,8 @@ const List = ({
 	var scroller = Scroll.scroller;
 
 	const setBaseNumbers = (rooms) => {
-		if(maxTotalRooms < rooms) {
-			setMaxTotalRooms(Math.ceil(rooms/100)*100);
+		if(maxTotalHabitable < rooms) {
+			setMaxTotalHabitable(Math.ceil(rooms/100)*100);
 			setMaxHabitable(maxHabitableURL ? maxHabitableURL : Math.ceil(rooms/100)*100);
 		}
 	}

@@ -33,7 +33,7 @@ const Home = () => {
     const [minHabitable, setMinHabitable] = useState((minHabitableURL ? minHabitableURL : 0));
     const [maxHabitable, setMaxHabitable] = useState((maxHabitableURL ? maxHabitableURL : 0));    
     const [habitableIsFiltered, setHabitableIsFiltered] = useState(false);
-    const [maxTotalRooms, setMaxTotalRooms] = useState(0);
+    const [maxTotalHabitable, setMaxTotalHabitable] = useState(0);
     
 
     return(
@@ -49,11 +49,12 @@ const Home = () => {
                 setMinHabitable={setMinHabitable}
                 minHabitableURL={minHabitableURL}
                 setMinHabitableURL={setMinHabitableURL}
-                maxTotalRooms={maxTotalRooms}
+                maxTotalHabitable={maxTotalHabitable}
                 maxHabitable={maxHabitable}
                 setMaxHabitable={setMaxHabitable}
                 maxHabitableURL={maxHabitableURL}
                 setMaxHabitableURL={setMaxHabitableURL}
+                
             />
             <MapContainer>
                 <List 
@@ -69,10 +70,10 @@ const Home = () => {
                     // habitable filters
                     setHabitableIsFiltered={setHabitableIsFiltered}
                     minHabitableURL={minHabitableURL}
-                    maxTotalRooms={maxTotalRooms}
+                    maxTotalHabitable={maxTotalHabitable}
                     maxHabitable={maxHabitable}
                     setMaxHabitable={setMaxHabitable}
-                    setMaxTotalRooms={setMaxTotalRooms}
+                    setMaxTotalHabitable={setMaxTotalHabitable}
                     maxHabitableURL={maxHabitableURL}
                 />
 
