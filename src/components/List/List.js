@@ -13,24 +13,9 @@ const List = ({
 		hoverMarker, 
 		toggleHoverMarker, 
 		hasError, 
-
-		setMaxHabitable, 
-		setMaxTotalHabitable, 
-		setMaxResidential,
-		setMaxTotalResidential
 	}) => {	
 
 	var scroller = Scroll.scroller;
-
-	useEffect(() => {
-		if (metaData) {
-			setMaxTotalHabitable(Math.ceil(metaData.habitable_rooms_max/100)*100);
-			setMaxHabitable(Math.ceil(metaData.habitable_rooms_max/100)*100)
-
-			setMaxTotalResidential(Math.ceil(metaData.residential_units_max/100)*100);
-			setMaxResidential(Math.ceil(metaData.residential_units_max/100)*100);
-		}
-	}, [markersData, setMaxTotalHabitable, setMaxTotalResidential]);
 
 	useEffect(() => {
 		if(activeMarker !== 0) {

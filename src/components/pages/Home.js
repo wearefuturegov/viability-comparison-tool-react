@@ -43,6 +43,16 @@ const Home = () => {
     const [residentialIsFiltered, setResidentialIsFiltered] = useState(false);
     const [maxTotalResidential, setMaxTotalResidential] = useState(0);
 
+    useEffect(() => {
+		if (viabilityData.meta) {
+			setMaxTotalHabitable(Math.ceil(viabilityData.meta.habitable_rooms_max/100)*100);
+			setMaxHabitable(maxHabitableURL ? maxHabitableURL : Math.ceil(viabilityData.meta.habitable_rooms_max/100)*100)
+
+			setMaxTotalResidential(Math.ceil(viabilityData.meta.residential_units_max/100)*100);
+			setMaxResidential(maxResidentialURL ? maxResidentialURL : Math.ceil(viabilityData.meta.residential_units_max/100)*100);
+		}
+    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential]);
+    
     return(
         <>
             <FilterBar 
@@ -80,17 +90,12 @@ const Home = () => {
                     // map & list filters
                     loading={loading} 
                     markersData={viabilityData.data} 
-                    metaData={viabilityData.meta}
                     activeMarker={activeMarker} 
                     toggleActiveMarker={toggleActiveMarker} 
                     hoverMarker={hoverMarker} 
                     toggleHoverMarker={toggleHoverMarker}
                     hasError={hasError}
 
-                    setMaxTotalHabitable={setMaxTotalHabitable}
-                    setMaxHabitable={setMaxHabitable}
-                    setMaxTotalResidential={setMaxTotalResidential}
-                    setMaxResidential={setMaxResidential}
                 />
 
                 <DisplayMap 
