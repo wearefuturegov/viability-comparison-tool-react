@@ -10,11 +10,10 @@ const SingleViability = styled.div`
     padding: 0 15px;
 `
 
-
 const ViabilityAppraisal = () => {
     const [chosenDevelopment, setChosenDevelopment] = useState();
     const [loading, setLoading] = useState(true);
-    const [hasError, setErrors] =  useState(false)
+    const [hasError, setErrors] =  useState(false);
 
     useEffect(() => {
         fetchData("https://viability-comparison-api.herokuapp.com/", window.location.pathname, setChosenDevelopment, setLoading, setErrors)
@@ -47,7 +46,7 @@ const ViabilityAppraisal = () => {
                         <li>Habitable Rooms: {chosenDevelopment.attributes.habitable_rooms}</li>
                         <li>Commercial Area: {chosenDevelopment.attributes.commercial_area_square_centimetres/100}m&sup2;</li>
                     </ul> 
-                    <SingleMap lat={chosenDevelopment.attributes.latitude} long={chosenDevelopment.attributes.longitude} />
+                    <SingleMap lat={chosenDevelopment.attributes.latitude} long={chosenDevelopment.attributes.longitude} boundaries={chosenDevelopment.attributes.boundary} />
                     </>
                 }
                 </>

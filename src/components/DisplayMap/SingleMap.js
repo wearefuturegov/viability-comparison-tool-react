@@ -1,7 +1,7 @@
 import React from "react";
 import "./leaflet.css";
 import "./map.scss";
-import { Map, TileLayer, Marker } from 'react-leaflet'
+import { Map, TileLayer, Marker, GeoJSON } from 'react-leaflet'
 import { divIcon } from 'leaflet';
 
 const developmentIcon = divIcon({
@@ -12,20 +12,36 @@ const developmentIcon = divIcon({
 	html: `<div class="development-icon"></div>`
 });
 
-const SingleMap = ({lat, long}) => {
+const boundaryStyle = {
+	color: "#256f8a",
+	weight: 2,
+	opacity: 1,
+	fillOpacity: 0.3
+};
+
+const SingleMap = ({lat, long, boundaries}) => {
 	return (
 		<Map center={[lat, long]} zoom={16} className="single-page-map">
 			<TileLayer
 				attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a>'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			<Marker 
-				key={lat}
-				icon={developmentIcon} 
-				position={[lat, long]} 
-			/>
+			{console.log(boundaries)}
+			{ boundaries ? 
+				<>
+					<GeoJSON style={boundaryStyle} data={boundaries}></GeoJSON>
+				</>
+			:
+				<Marker 
+					key={lat}
+					icon={developmentIcon} 
+					position={[lat, long]} 
+				/>
+			}
+
 		</Map>
 	)
 }
 
 export default SingleMap;
+
