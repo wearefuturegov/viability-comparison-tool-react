@@ -49,7 +49,7 @@ const StyledButton = styled.button`
 
     &:disabled, &:disabled:hover {
         background: #eee;
-        border: 1px solid #eee;
+        border: 2px solid #eee;
         color: #121212;
         cursor: no-drop;
     }
