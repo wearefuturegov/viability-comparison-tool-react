@@ -12,7 +12,10 @@
             font-weight: 600;
             font-size: 18px;
             display: inline-block;
-            margin-right: 25px;
+            width: 45%;
+            &:first-of-type {
+                margin-right: 15px;
+            }
         }
         input {
             display: block;
@@ -31,7 +34,7 @@
             }
         }
         input[type=number] {
-            width: 80px;
+            width: 75%;
         }
         h2 {
             margin-top: 0;
@@ -62,5 +65,24 @@
     &:disabled {
         cursor: no-drop;
         opacity: 1;
+    }
+}
+
+.input-range {
+    width: 85%;
+    margin-left: 8px;
+    margin-bottom: 13px;
+    .input-range__label {
+        display: none;
+    }
+    .input-range__slider {
+        background: #046F9E;
+        border: 1px solid #046F9E;
+        &:focus {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+        }
+    }
+    .input-range__track--active {
+        background: #046F9E;
     }
 }
