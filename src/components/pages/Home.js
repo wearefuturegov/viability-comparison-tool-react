@@ -23,7 +23,7 @@ const Home = () => {
     const [filters, setFilters] = useState('?');
     
     useEffect(() => {
-        fetchData(API, filters, setMarkersData, setLoading, setErrors)
+        fetchData(API, filters, setMarkersData, setLoading, setErrors);
     }, [filters]);
 
 
@@ -34,7 +34,14 @@ const Home = () => {
     const [maxHabitable, setMaxHabitable] = useState((maxHabitableURL ? maxHabitableURL : 0));    
     const [habitableIsFiltered, setHabitableIsFiltered] = useState(false);
     const [maxTotalHabitable, setMaxTotalHabitable] = useState(0);
-    
+
+    // Residential Filter variables
+    const [minResidentialURL, setMinResidentialURL] = useQueryParam('min_residential_units', NumberParam);
+    const [maxResidentialURL, setMaxResidentialURL] = useQueryParam('max_residential_units', NumberParam);
+    const [minResidential, setMinResidential] = useState((minResidentialURL ? minResidentialURL : 0));
+    const [maxResidential, setMaxResidential] = useState((maxResidentialURL ? maxResidentialURL : 0));    
+    const [residentialIsFiltered, setResidentialIsFiltered] = useState(false);
+    const [maxTotalResidential, setMaxTotalResidential] = useState(0);
 
     return(
         <>
@@ -54,7 +61,19 @@ const Home = () => {
                 setMaxHabitable={setMaxHabitable}
                 maxHabitableURL={maxHabitableURL}
                 setMaxHabitableURL={setMaxHabitableURL}
-                
+
+                //residential filters
+                residentialIsFiltered={residentialIsFiltered}
+                setResidentialIsFiltered={setResidentialIsFiltered}
+                minResidential={minResidential}
+                setMinResidential={setMinResidential}
+                minResidentialURL={minResidentialURL}
+                setMinResidentialURL={setMinResidentialURL}
+                maxTotalResidential={maxTotalResidential}
+                maxResidential={maxResidential}
+                setMaxResidential={setMaxResidential}
+                maxResidentialURL={maxResidentialURL}
+                setMaxResidentialURL={setMaxResidentialURL}
             />
             <MapContainer>
                 <List 
@@ -67,14 +86,10 @@ const Home = () => {
                     toggleHoverMarker={toggleHoverMarker}
                     hasError={hasError}
 
-                    // habitable filters
-                    setHabitableIsFiltered={setHabitableIsFiltered}
-                    minHabitableURL={minHabitableURL}
-                    maxTotalHabitable={maxTotalHabitable}
-                    maxHabitable={maxHabitable}
-                    setMaxHabitable={setMaxHabitable}
                     setMaxTotalHabitable={setMaxTotalHabitable}
-                    maxHabitableURL={maxHabitableURL}
+                    setMaxHabitable={setMaxHabitable}
+                    setMaxTotalResidential={setMaxTotalResidential}
+                    setMaxResidential={setMaxResidential}
                 />
 
                 <DisplayMap 

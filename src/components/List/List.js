@@ -12,20 +12,23 @@ const List = ({
 		hoverMarker, 
 		toggleHoverMarker, 
 		hasError, 
-		maxTotalHabitable, 
-		setMaxTotalHabitable, 
+
 		setMaxHabitable, 
-		maxHabitableURL
+		setMaxTotalHabitable, 
+		setMaxResidential,
+		setMaxTotalResidential
 	}) => {	
 
 	var scroller = Scroll.scroller;
 
-	const setBaseNumbers = (rooms) => {
-		if(maxTotalHabitable < rooms) {
-			setMaxTotalHabitable(Math.ceil(rooms/100)*100);
-			setMaxHabitable(maxHabitableURL ? maxHabitableURL : Math.ceil(rooms/100)*100);
-		}
-	}
+	useEffect(() => {
+		console.log(markersData);
+		setMaxTotalHabitable(10000);
+		setMaxHabitable(10000)
+
+		setMaxTotalResidential(10000);
+		setMaxResidential(10000);
+	}, [markersData, setMaxTotalHabitable, setMaxTotalResidential]);
 
 	useEffect(() => {
 		if(activeMarker !== 0) {
@@ -57,7 +60,6 @@ const List = ({
 					onMouseEnter={() => {toggleHoverMarker(marker.id)} }
 					onMouseLeave={() => {toggleHoverMarker(0)} }
 				>
-					{setBaseNumbers(marker.attributes.habitable_rooms)}
 					<h3>{marker.attributes.name}</h3>
 					<Link tabIndex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
 				</li>        

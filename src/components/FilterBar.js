@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import Button from './Button';
 
 import HabitableModal from './modals/HabitableModal'
+import ResidentialModal from './modals/ResidentialModal'
 
 Modal.setAppElement('#root');
 
@@ -16,6 +17,7 @@ const FilterContainer = styled.div`
 const FilterBar = ({
     toggleActiveMarker,
     setFilters,
+
     minHabitable,
     setMinHabitable,
     setMinHabitableURL,
@@ -26,16 +28,29 @@ const FilterBar = ({
     setHabitableIsFiltered,
     maxTotalHabitable,
     minHabitableURL,
-    maxHabitableURL
+    maxHabitableURL,
+
+    minResidential,
+    setMinResidential,
+    setMinResidentialURL,
+    maxResidential,
+    setMaxResidentialURL,
+    setMaxResidential,
+    residentialIsFiltered,
+    setResidentialIsFiltered,
+    maxTotalResidential,
+    minResidentialURL,
+    maxResidentialURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [setupFilters, changeSetupFilters] =  useState(false);
     const [modalType, setModalType] =  useState('');
 
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
+    const [residentialButtonText, setResidentialButtonText] = useState('Residential units');
     
-
     useEffect(() => {
+        // HABITABLE FUNCTIONS
         if((maxHabitableURL === undefined && minHabitableURL === undefined) || (maxHabitableURL === maxTotalHabitable && minHabitableURL === 0)) {
             setHabitableIsFiltered(false);
         } else {
@@ -43,11 +58,29 @@ const FilterBar = ({
                 setHabitableIsFiltered(true);
                 setMinHabitableURL(minHabitable);
                 setMaxHabitableURL(maxHabitable);
+            }
+        }
 
+        // RESIDENTIAL FUNCTIONS
+        if((maxResidentialURL === undefined && minResidentialURL === undefined) || (maxResidentialURL === maxTotalResidential && minResidentialURL === 0)) {
+            setResidentialIsFiltered(false);
+        } else {
+            if(maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0) {
+                setResidentialIsFiltered(true);
+                setMinResidentialURL(minResidential);
+                setMaxResidentialURL(maxResidential);
+            }
+        }
+
+
+        if(maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0 || maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0) {
+            if (maxTotalResidential !== 0 || maxTotalHabitable !== 0) {
                 setFilters('?' 
                 + 'min_habitable_rooms=' + minHabitable 
                 + '&max_habitable_rooms=' + maxHabitable
-                ) //add all other filters here
+                + '&min_residential_units=' + minResidential 
+                + '&max_residential_units=' + maxResidential
+                ) //add all other filters above here
             }
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,11 +108,30 @@ const FilterBar = ({
             } else {
                 setHabitableButtonText('Habitable rooms');
             }
+
+            if(residentialIsFiltered) {
+                if (minResidential !== 0) {
+                    if (maxResidential !== maxTotalResidential) {
+                        setResidentialButtonText(minResidential + ' - ' + maxResidential + ' residential units');
+                    } else {
+                        setResidentialButtonText(minResidential + '+ residential units');
+                    }
+                } else {
+                    if(maxTotalResidential === maxResidential) {
+                        setResidentialIsFiltered(false);
+                        setResidentialButtonText('Residential units');
+                    } else {
+                        setResidentialButtonText('Up to ' + maxResidential + ' residential units');
+                    }
+                }
+            } else {
+                setResidentialButtonText('Residential units');
+            }
         }
         
         setupFilterText();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [habitableIsFiltered, maxTotalHabitable, setupFilters, setHabitableIsFiltered]);
+    }, [habitableIsFiltered, setupFilters, maxTotalHabitable, setHabitableIsFiltered, maxTotalResidential, setResidentialIsFiltered]);
 
 
 
@@ -115,6 +167,21 @@ const FilterBar = ({
                     maxTotalHabitable={maxTotalHabitable}
                     setHabitableButtonText={setHabitableButtonText}
                 />;
+            case 'residential':
+                return <ResidentialModal 
+                    toggleActiveMarker={toggleActiveMarker}
+                    handleCloseModal={closeFunction}
+                    minResidential={minResidential}
+                    setMinResidential={setMinResidential}
+                    setMinResidentialURL={setMinResidentialURL}
+                    maxResidential={maxResidential}
+                    setMaxResidential={setMaxResidential}
+                    setMaxResidentialURL={setMaxResidentialURL}
+                    residentialIsFiltered={residentialIsFiltered}
+                    setResidentialIsFiltered={setResidentialIsFiltered}
+                    maxTotalResidential={maxTotalResidential}
+                    setResidentialButtonText={setResidentialButtonText}
+                />;
             default:
                 return <p>this would be all filters</p>;
         }
@@ -124,6 +191,7 @@ const FilterBar = ({
         <>
             <FilterContainer>
                 <Button type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} onClick={() => handleOpenModal('habitable')}>{habitableButtonText}</Button>
+                <Button type={'filterBtn ' + (!residentialIsFiltered ? '' : 'primary')} onClick={() => handleOpenModal('residential')}>{residentialButtonText}</Button>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType, handleCloseModal) }

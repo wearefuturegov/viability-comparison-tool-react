@@ -31,7 +31,7 @@ const developmentActiveIcon = divIcon({
 });
 
 const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
-	const [position, setPosition] = useState([51.5052, -0.06096]);
+	const [position, setPosition] = useState([51.4955927,-0.0756637]);
 	const southwarkStyle = {
         color: "#256f8a",
         weight: 2,
