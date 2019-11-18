@@ -5,11 +5,21 @@
     top: 0;
     right: 0;
     bottom: 0;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 .single-page-map {
     position: relative;
     width: 100%;
     height: 450px;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 
 .icon_container {
