@@ -34,11 +34,25 @@
             }
         }
         input[type=number] {
-            width: 75%;
+            width: 90%;
         }
         h2 {
             margin-top: 0;
             margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 600px) {
+            width: -webkit-calc(100% - 30px);
+            width: -moz-calc(100% - 30px);
+            width: calc(100% - 30px);
+            height: -webkit-calc(100% - 70px);
+            height: -moz-calc(100% - 70px);
+            height: calc(100% - 70px);
+            padding: 15px !important;
+            top:0 !important;
+            left:0 !important;
+            position: relative !important;
+            margin-top: 40px;
         }
     }
 }
@@ -84,5 +98,9 @@
     }
     .input-range__track--active {
         background: #046F9E;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 95%;
     }
 }

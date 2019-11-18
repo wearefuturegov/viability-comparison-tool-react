@@ -10,10 +10,14 @@
     &:active {
         cursor: grabbing;
     }
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }
 .single-page-map {
     position: relative;
-    width: 100%;
+    width: calc(100% - 30px);
     height: 450px;
     cursor: grab;
 

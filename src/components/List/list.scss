@@ -11,6 +11,12 @@
     height: -webkit-calc(100% - 30px);
     height:    -moz-calc(100% - 30px);
     height:         calc(100% - 30px);
+
+    @media screen and (max-width: 600px) {
+      width: -webkit-calc(100% - 30px);
+      width: -moz-calc(100% - 30px);
+      width: calc(100% - 30px);
+    }
 }
 
 .list-item {
