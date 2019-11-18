@@ -7,6 +7,7 @@ import Button from '../Button';
 const List = ({
 		loading, 
 		markersData, 
+		metaData,
 		activeMarker, 
 		toggleActiveMarker, 
 		hoverMarker, 
@@ -22,12 +23,13 @@ const List = ({
 	var scroller = Scroll.scroller;
 
 	useEffect(() => {
-		console.log(markersData);
-		setMaxTotalHabitable(10000);
-		setMaxHabitable(10000)
+		if (metaData) {
+			setMaxTotalHabitable(Math.ceil(metaData.habitable_rooms_max/100)*100);
+			setMaxHabitable(Math.ceil(metaData.habitable_rooms_max/100)*100)
 
-		setMaxTotalResidential(10000);
-		setMaxResidential(10000);
+			setMaxTotalResidential(Math.ceil(metaData.residential_units_max/100)*100);
+			setMaxResidential(Math.ceil(metaData.residential_units_max/100)*100);
+		}
 	}, [markersData, setMaxTotalHabitable, setMaxTotalResidential]);
 
 	useEffect(() => {
@@ -51,21 +53,25 @@ const List = ({
 				<div className="list-item card-loader card-loader--tabs"></div>
 				</>
 			: 
-			markersData.map(marker => (
-				<li 
-					key={marker.id} 
-					name={'scroll'+marker.id}
-					className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
-					onClick={() => { toggleActiveMarker(marker.id)} }
-					onMouseEnter={() => {toggleHoverMarker(marker.id)} }
-					onMouseLeave={() => {toggleHoverMarker(0)} }
-				>
-					<h3>{marker.attributes.name}</h3>
-					<Link tabIndex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
-				</li>        
-			))}
-			{ markersData.length === 0 && 
+			markersData &&
+				markersData.map(marker => (
+					<li 
+						key={marker.id} 
+						name={'scroll'+marker.id}
+						className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
+						onClick={() => { toggleActiveMarker(marker.id)} }
+						onMouseEnter={() => {toggleHoverMarker(marker.id)} }
+						onMouseLeave={() => {toggleHoverMarker(0)} }
+					>
+						<h3>{marker.attributes.name}</h3>
+						<Link tabIndex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
+					</li>        
+				))
+			}
+			{ markersData ? 
+				markersData.length === 0 && 
 				<p>No results found</p>
+			:null
 			}
 			{ hasError && 
 				<p>Sorry there was an error fetching the results, please try again.</p>

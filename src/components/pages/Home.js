@@ -15,7 +15,7 @@ const MapContainer = styled.div`
 const Home = () => {
     // Map & list variables
     const [activeMarker, toggleActiveMarker] = useState(0);
-    const [markersData, setMarkersData] = useState([]);
+    const [viabilityData, setViabilityData] = useState([]);
     const [loading, setLoading] =  useState(true);
     const [hoverMarker, toggleHoverMarker] = useState(0);
     const [hasError, setErrors] =  useState(false)
@@ -23,7 +23,7 @@ const Home = () => {
     const [filters, setFilters] = useState('?');
     
     useEffect(() => {
-        fetchData(API, filters, setMarkersData, setLoading, setErrors);
+        fetchData(API, filters, setViabilityData, setLoading, setErrors);
     }, [filters]);
 
 
@@ -79,7 +79,8 @@ const Home = () => {
                 <List 
                     // map & list filters
                     loading={loading} 
-                    markersData={markersData} 
+                    markersData={viabilityData.data} 
+                    metaData={viabilityData.meta}
                     activeMarker={activeMarker} 
                     toggleActiveMarker={toggleActiveMarker} 
                     hoverMarker={hoverMarker} 
@@ -93,7 +94,8 @@ const Home = () => {
                 />
 
                 <DisplayMap 
-                    markersData={markersData} 
+                    loading={loading}
+                    markersData={viabilityData.data} 
                     activeMarker={activeMarker} 
                     toggleActiveMarker={toggleActiveMarker} 
                     hoverMarker={hoverMarker} 
@@ -106,11 +108,11 @@ const Home = () => {
 
 export default Home
 
-export const fetchData = async (API, filters, setMarkersData, setLoading, setErrors) => {
+export const fetchData = async (API, filters, setViabilityData, setLoading, setErrors) => {
     setLoading(true);
     const res = await fetch(API + filters);
     res
         .json()
-        .then(res => setMarkersData(res.data), setLoading(false))
+        .then(res => setViabilityData(res), setLoading(false))
         .catch(err => setErrors(err));
 }

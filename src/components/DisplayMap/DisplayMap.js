@@ -30,7 +30,7 @@ const developmentActiveIcon = divIcon({
 	html: `<div class="development-icon active"></div>`
 });
 
-const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
+const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
 	const [position, setPosition] = useState([51.4955927,-0.0756637]);
 	const southwarkStyle = {
         color: "#256f8a",
@@ -60,21 +60,19 @@ const DisplayMap = ({markersData, activeMarker, toggleActiveMarker, hoverMarker,
 			/>
 			<GeoJSON style={southwarkStyle} data={southwarkData}></GeoJSON>
 			<GeoJSON style={towerHamletsStyle} data={towerHamletsData}></GeoJSON>
-			{markersData.map(marker => (
-				<Marker 
-					key={marker.id}
-					icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker === marker.id ? developmentHoverIcon : developmentIcon))} 
-					position={[marker.attributes.latitude, marker.attributes.longitude]} 
-					onClick={() => { toggleActiveMarker(marker.id)}}
-					onMouseOver={() => { toggleHoverMarker(marker.id)} }
-					onMouseOut={() => { toggleHoverMarker(0)} }
-				>
-					
-					{/* <Popup>
-						{marker.attributes.name}
-					</Popup> */}
-				</Marker>
-			))};
+			{ loading !== true && markersData !== undefined ?
+				markersData.map(marker => (
+					<Marker 
+						key={marker.id}
+						icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker === marker.id ? developmentHoverIcon : developmentIcon))} 
+						position={[marker.attributes.latitude, marker.attributes.longitude]} 
+						onClick={() => { toggleActiveMarker(marker.id)}}
+						onMouseOver={() => { toggleHoverMarker(marker.id)} }
+						onMouseOut={() => { toggleHoverMarker(0)} }
+					>
+					</Marker>
+				))
+			:null}
 		</Map>
 	)
 }
