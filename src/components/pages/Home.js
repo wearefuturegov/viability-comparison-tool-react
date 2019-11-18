@@ -58,6 +58,7 @@ const Home = () => {
             <FilterBar 
                 toggleActiveMarker={toggleActiveMarker}
                 setFilters={setFilters}
+                loading={loading}
 
                 // habitable filters
                 habitableIsFiltered={habitableIsFiltered}

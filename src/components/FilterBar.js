@@ -17,6 +17,7 @@ const FilterContainer = styled.div`
 const FilterBar = ({
     toggleActiveMarker,
     setFilters,
+    loading,
 
     minHabitable,
     setMinHabitable,
@@ -137,8 +138,10 @@ const FilterBar = ({
 
 
     function handleOpenModal(type) {
-        setOpenModal(true);
-        setModalType(type);
+        if(loading !== true) {
+            setOpenModal(true);
+            setModalType(type);
+        }
     }
   
     const handleCloseModal = () => {
@@ -190,8 +193,18 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <Button type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} onClick={() => handleOpenModal('habitable')}>{habitableButtonText}</Button>
-                <Button type={'filterBtn ' + (!residentialIsFiltered ? '' : 'primary')} onClick={() => handleOpenModal('residential')}>{residentialButtonText}</Button>
+                <Button 
+                    type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} 
+                    disabled={loading} 
+                    onClick={() => handleOpenModal('habitable')}>
+                        {habitableButtonText}
+                </Button>
+                <Button 
+                    type={'filterBtn ' + (!residentialIsFiltered ? '' : 'primary')} 
+                    disabled={loading} 
+                    onClick={() => handleOpenModal('residential')}>
+                        {residentialButtonText}
+                </Button>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType, handleCloseModal) }
