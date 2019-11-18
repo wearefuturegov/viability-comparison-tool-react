@@ -5,6 +5,21 @@ import southwarkData from "./southwark.json";
 import towerHamletsData from "./towerHamlets.json";
 import { Map, TileLayer, Marker, GeoJSON } from 'react-leaflet'
 import { divIcon } from 'leaflet';
+import styled from 'styled-components';
+
+const LoadingMap = styled.div`
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0, 0.4);
+	z-index: 99999;
+	position: absolute;
+	color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+	padding-top: 45%;
+	cursor: default;
+`
 
 const developmentIcon = divIcon({
 	className: 'icon_container',
@@ -29,6 +44,8 @@ const developmentActiveIcon = divIcon({
 	iconSize: [46, 46],
 	html: `<div class="development-icon active"></div>`
 });
+
+
 
 const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
 	const [position, setPosition] = useState([51.4955927,-0.0756637]);
@@ -72,7 +89,9 @@ const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hov
 					>
 					</Marker>
 				))
-			:null}
+			: 
+				<LoadingMap>Loading...</LoadingMap>
+			}
 		</Map>
 	)
 }
