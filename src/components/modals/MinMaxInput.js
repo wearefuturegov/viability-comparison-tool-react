@@ -20,6 +20,7 @@ const ButtonBar = styled.div`
 `
 
 const MinMaxInput = ({
+    step,
     toggleActiveMarker,
     handleCloseModal,
     min,
@@ -85,18 +86,18 @@ const MinMaxInput = ({
                 maxValue={maxTotal}
                 minValue={0}
                 value={rangeVals}
-                step={10}
+                step={step}
                 onChange={value => setRangeVals(value)}
                 onChangeComplete={value => updateRangeVals(value)}
                     />
 
             <label>
                 Min
-                <input name="minInput" id="minInput" type="number" step="1" min={0} max={maxTotal} value={min} onChange={e => updateMin(e.target.value)} />
+                <input name="minInput" id="minInput" type="number" step={step/2} min={0} max={maxTotal} value={min} onChange={e => updateMin(e.target.value)} />
             </label>
             <label>
                 Max
-                <input name="maxInput" id="maxInput" type="number" step="1" min={0} max={maxTotal} value={max} onChange={e => updateMax(e.target.value)} />
+                <input name="maxInput" id="maxInput" type="number" step={step/2} min={0} max={maxTotal} value={max} onChange={e => updateMax(e.target.value)} />
             </label>
 
             <ButtonBar>

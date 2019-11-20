@@ -24,6 +24,7 @@ const ResidentialModal = ({
             <ModalInner>
                 <h2>Number of residential units</h2>
                 <MinMaxInput
+                    step={10}
                     toggleActiveMarker={toggleActiveMarker}
                     handleCloseModal={handleCloseModal}
                     min={minResidential}

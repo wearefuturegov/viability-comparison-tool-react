@@ -25,6 +25,7 @@ const HabitableModal = ({
             <ModalInner>
                 <h2>Number of habitable rooms</h2>
                 <MinMaxInput
+                    step={10}
                     toggleActiveMarker={toggleActiveMarker}
                     handleCloseModal={handleCloseModal}
                     min={minHabitable}

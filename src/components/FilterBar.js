@@ -6,6 +6,7 @@ import Button from './Button';
 
 import HabitableModal from './modals/HabitableModal'
 import ResidentialModal from './modals/ResidentialModal'
+import GDVModal from './modals/GDVModal'
 
 Modal.setAppElement('#root');
 
@@ -41,7 +42,19 @@ const FilterBar = ({
     setResidentialIsFiltered,
     maxTotalResidential,
     minResidentialURL,
-    maxResidentialURL
+    maxResidentialURL,
+
+    minGDV,
+    setMinGDV,
+    setMinGDVURL,
+    maxGDV,
+    setMaxGDVURL,
+    setMaxGDV,
+    GDVIsFiltered,
+    setGDVIsFiltered,
+    maxTotalGDV,
+    minGDVURL,
+    maxGDVURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [setupFilters, changeSetupFilters] =  useState(false);
@@ -49,6 +62,7 @@ const FilterBar = ({
 
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     const [residentialButtonText, setResidentialButtonText] = useState('Residential units');
+    const [GDVButtonText, setGDVButtonText] = useState('GDV');
     
     useEffect(() => {
         // HABITABLE FUNCTIONS
@@ -73,6 +87,17 @@ const FilterBar = ({
             }
         }
 
+        // RESIDENTIAL FUNCTIONS
+        if((maxGDVURL === undefined && minGDVURL === undefined) || (maxGDVURL === maxTotalGDV && minGDVURL === 0)) {
+            setGDVIsFiltered(false);
+        } else {
+            if(maxGDVURL !== maxTotalGDV || minGDVURL !== 0) {
+                setGDVIsFiltered(true);
+                setMinGDVURL(minGDV);
+                setMaxGDVURL(maxGDV);
+            }
+        }
+
 
         if(maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0 || maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0) {
             if (maxTotalResidential !== 0 || maxTotalHabitable !== 0) {
@@ -81,6 +106,8 @@ const FilterBar = ({
                 + '&max_habitable_rooms=' + maxHabitable
                 + '&min_residential_units=' + minResidential 
                 + '&max_residential_units=' + maxResidential
+                + '&min_gdv=' + minGDV 
+                + '&max_gdv=' + maxGDV
                 ) //add all other filters above here
             }
         }
@@ -185,6 +212,21 @@ const FilterBar = ({
                     maxTotalResidential={maxTotalResidential}
                     setResidentialButtonText={setResidentialButtonText}
                 />;
+            case 'gdv':
+                return <GDVModal 
+                    toggleActiveMarker={toggleActiveMarker}
+                    handleCloseModal={closeFunction}
+                    minGDV={minGDV}
+                    setMinGDV={setMinGDV}
+                    setMinGDVURL={setMinGDVURL}
+                    maxGDV={maxGDV}
+                    setMaxGDV={setMaxGDV}
+                    setMaxGDVURL={setMaxGDVURL}
+                    GDVIsFiltered={GDVIsFiltered}
+                    setGDVIsFiltered={setGDVIsFiltered}
+                    maxTotalGDV={maxTotalGDV}
+                    setGDVButtonText={setGDVButtonText}
+                />;
             default:
                 return <p>this would be all filters</p>;
         }
@@ -204,6 +246,12 @@ const FilterBar = ({
                     disabled={loading} 
                     onClick={() => handleOpenModal('residential')}>
                         {residentialButtonText}
+                </Button>
+                <Button 
+                    type={'filterBtn ' + (!GDVIsFiltered ? '' : 'primary')} 
+                    disabled={loading} 
+                    onClick={() => handleOpenModal('gdv')}>
+                        {GDVButtonText}
                 </Button>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">

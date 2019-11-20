@@ -42,6 +42,14 @@ const Home = () => {
     const [maxResidential, setMaxResidential] = useState((maxResidentialURL ? maxResidentialURL : 0));    
     const [residentialIsFiltered, setResidentialIsFiltered] = useState(false);
     const [maxTotalResidential, setMaxTotalResidential] = useState(0);
+    
+    // GDV Filter variables
+    const [minGDVURL, setMinGDVURL] = useQueryParam('min_GDV_units', NumberParam);
+    const [maxGDVURL, setMaxGDVURL] = useQueryParam('max_GDV_units', NumberParam);
+    const [minGDV, setMinGDV] = useState((minGDVURL ? minGDVURL : 0));
+    const [maxGDV, setMaxGDV] = useState((maxGDVURL ? maxGDVURL : 0));    
+    const [GDVIsFiltered, setGDVIsFiltered] = useState(false);
+    const [maxTotalGDV, setMaxTotalGDV] = useState(0);
 
     useEffect(() => {
 		if (viabilityData.meta) {
@@ -49,9 +57,13 @@ const Home = () => {
 			setMaxHabitable(maxHabitableURL ? maxHabitableURL : Math.ceil(viabilityData.meta.habitable_rooms_max/100)*100)
 
 			setMaxTotalResidential(Math.ceil(viabilityData.meta.residential_units_max/100)*100);
-			setMaxResidential(maxResidentialURL ? maxResidentialURL : Math.ceil(viabilityData.meta.residential_units_max/100)*100);
+            setMaxResidential(maxResidentialURL ? maxResidentialURL : Math.ceil(viabilityData.meta.residential_units_max/100)*100);
+            
+            setMaxTotalGDV(Math.ceil(viabilityData.meta.gdv_max/100)*100);
+            setMaxGDV(maxGDVURL ? maxGDVURL : Math.ceil(viabilityData.meta.gdv_max/100)*100);
+            console.log()
 		}
-    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential]);
+    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV]);
     
     return(
         <>
@@ -85,6 +97,19 @@ const Home = () => {
                 setMaxResidential={setMaxResidential}
                 maxResidentialURL={maxResidentialURL}
                 setMaxResidentialURL={setMaxResidentialURL}
+
+                //GDV filters
+                GDVIsFiltered={GDVIsFiltered}
+                setGDVIsFiltered={setGDVIsFiltered}
+                minGDV={minGDV}
+                setMinGDV={setMinGDV}
+                minGDVURL={minGDVURL}
+                setMinGDVURL={setMinGDVURL}
+                maxTotalGDV={maxTotalGDV}
+                maxGDV={maxGDV}
+                setMaxGDV={setMaxGDV}
+                maxGDVURL={maxGDVURL}
+                setMaxGDVURL={setMaxGDVURL}
             />
             <MapContainer>
                 <List 
