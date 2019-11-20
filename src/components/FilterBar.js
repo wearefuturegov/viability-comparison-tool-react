@@ -7,6 +7,7 @@ import Button from './Button';
 import HabitableModal from './modals/HabitableModal'
 import ResidentialModal from './modals/ResidentialModal'
 import GDVModal from './modals/GDVModal'
+import StoriesModal from './modals/StoriesModal'
 
 Modal.setAppElement('#root');
 
@@ -54,7 +55,19 @@ const FilterBar = ({
     setGDVIsFiltered,
     maxTotalGDV,
     minGDVURL,
-    maxGDVURL
+    maxGDVURL,
+
+    minStories,
+    setMinStories,
+    setMinStoriesURL,
+    maxStories,
+    setMaxStoriesURL,
+    setMaxStories,
+    StoriesIsFiltered,
+    setStoriesIsFiltered,
+    maxTotalStories,
+    minStoriesURL,
+    maxStoriesURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [setupFilters, changeSetupFilters] =  useState(false);
@@ -63,6 +76,7 @@ const FilterBar = ({
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     const [residentialButtonText, setResidentialButtonText] = useState('Residential units');
     const [GDVButtonText, setGDVButtonText] = useState('GDV');
+    const [StoriesButtonText, setStoriesButtonText] = useState('Stories');
     
     useEffect(() => {
         // HABITABLE FUNCTIONS
@@ -98,9 +112,28 @@ const FilterBar = ({
             }
         }
 
+        // STORIES FUNCTIONS
+        if((maxStoriesURL === undefined && minStoriesURL === undefined) || (maxStoriesURL === maxTotalStories && minStoriesURL === 0)) {
+            setStoriesIsFiltered(false);
+        } else {
+            if(maxStoriesURL !== maxTotalStories || minStoriesURL !== 0) {
+                setStoriesIsFiltered(true);
+                setMinStoriesURL(minStories);
+                setMaxStoriesURL(maxStories);
+            }
+        }
 
-        if(maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0 || maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0) {
-            if (maxTotalResidential !== 0 || maxTotalHabitable !== 0) {
+
+        if( maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0 || 
+            maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0 ||
+            maxGDVURL !== maxTotalGDV || minGDVURL !== 0 ||
+            maxStoriesURL !== maxTotalStories || minStoriesURL !== 0
+        ) {
+            if (maxTotalResidential !== 0 || 
+                maxTotalHabitable !== 0 ||
+                maxTotalGDV !== 0 ||
+                maxTotalStories !== 0
+            ) {
                 setFilters('?' 
                 + 'min_habitable_rooms=' + minHabitable 
                 + '&max_habitable_rooms=' + maxHabitable
@@ -108,6 +141,8 @@ const FilterBar = ({
                 + '&max_residential_units=' + maxResidential
                 + '&min_gdv=' + minGDV 
                 + '&max_gdv=' + maxGDV
+                + '&min_stories=' + minStories 
+                + '&max_stories=' + maxStories
                 ) //add all other filters above here
             }
         }
@@ -118,6 +153,7 @@ const FilterBar = ({
 
     useEffect(() => {
         function setupFilterText() {
+            // habitable setup
             if(habitableIsFiltered) {
                 if (minHabitable !== 0) {
                     if (maxHabitable !== maxTotalHabitable) {
@@ -137,6 +173,7 @@ const FilterBar = ({
                 setHabitableButtonText('Habitable rooms');
             }
 
+            // residential setup
             if(residentialIsFiltered) {
                 if (minResidential !== 0) {
                     if (maxResidential !== maxTotalResidential) {
@@ -154,6 +191,33 @@ const FilterBar = ({
                 }
             } else {
                 setResidentialButtonText('Residential units');
+            }
+
+            // gdv setup
+            if(GDVIsFiltered) {
+                setGDVButtonText('GDV filtered');
+            } else {
+                setGDVButtonText('GDV');
+            }
+
+            // stories setup
+            if(StoriesIsFiltered) {
+                if (minStories !== 0) {
+                    if (maxStories !== maxTotalStories) {
+                        setStoriesButtonText(minStories + ' - ' + maxStories + ' stories');
+                    } else {
+                        setStoriesButtonText(minStories + '+ stories');
+                    }
+                } else {
+                    if(maxTotalStories === maxStories) {
+                        setStoriesIsFiltered(false);
+                        setStoriesButtonText('Stories');
+                    } else {
+                        setStoriesButtonText('Up to ' + maxStories + ' stories');
+                    }
+                }
+            } else {
+                setStoriesButtonText('Stories');
             }
         }
         
@@ -227,6 +291,21 @@ const FilterBar = ({
                     maxTotalGDV={maxTotalGDV}
                     setGDVButtonText={setGDVButtonText}
                 />;
+            case 'stories':
+                return <StoriesModal 
+                    toggleActiveMarker={toggleActiveMarker}
+                    handleCloseModal={closeFunction}
+                    minStories={minStories}
+                    setMinStories={setMinStories}
+                    setMinStoriesURL={setMinStoriesURL}
+                    maxStories={maxStories}
+                    setMaxStories={setMaxStories}
+                    setMaxStoriesURL={setMaxStoriesURL}
+                    StoriesIsFiltered={StoriesIsFiltered}
+                    setStoriesIsFiltered={setStoriesIsFiltered}
+                    maxTotalStories={maxTotalStories}
+                    setStoriesButtonText={setStoriesButtonText}
+                />;
             default:
                 return <p>this would be all filters</p>;
         }
@@ -252,6 +331,12 @@ const FilterBar = ({
                     disabled={loading} 
                     onClick={() => handleOpenModal('gdv')}>
                         {GDVButtonText}
+                </Button>
+                <Button 
+                    type={'filterBtn ' + (!StoriesIsFiltered ? '' : 'primary')} 
+                    disabled={loading} 
+                    onClick={() => handleOpenModal('stories')}>
+                        {StoriesButtonText}
                 </Button>
             </FilterContainer>
             <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">

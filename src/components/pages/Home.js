@@ -51,6 +51,14 @@ const Home = () => {
     const [GDVIsFiltered, setGDVIsFiltered] = useState(false);
     const [maxTotalGDV, setMaxTotalGDV] = useState(0);
 
+    // Stories Filter variables
+    const [minStoriesURL, setMinStoriesURL] = useQueryParam('min_Stories_units', NumberParam);
+    const [maxStoriesURL, setMaxStoriesURL] = useQueryParam('max_Stories_units', NumberParam);
+    const [minStories, setMinStories] = useState((minStoriesURL ? minStoriesURL : 0));
+    const [maxStories, setMaxStories] = useState((maxStoriesURL ? maxStoriesURL : 0));    
+    const [StoriesIsFiltered, setStoriesIsFiltered] = useState(false);
+    const [maxTotalStories, setMaxTotalStories] = useState(0);
+
     useEffect(() => {
 		if (viabilityData.meta) {
 			setMaxTotalHabitable(Math.ceil(viabilityData.meta.habitable_rooms_max/100)*100);
@@ -61,9 +69,11 @@ const Home = () => {
             
             setMaxTotalGDV(Math.ceil(viabilityData.meta.gdv_max/100)*100);
             setMaxGDV(maxGDVURL ? maxGDVURL : Math.ceil(viabilityData.meta.gdv_max/100)*100);
-            console.log()
+
+            setMaxTotalStories(Math.ceil(viabilityData.meta.stories_max/100)*100);
+            setMaxStories(maxStoriesURL ? maxStoriesURL : Math.ceil(viabilityData.meta.stories_max/100)*100);
 		}
-    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV]);
+    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV, setMaxTotalStories]);
     
     return(
         <>
@@ -110,6 +120,19 @@ const Home = () => {
                 setMaxGDV={setMaxGDV}
                 maxGDVURL={maxGDVURL}
                 setMaxGDVURL={setMaxGDVURL}
+
+                //Stories filters
+                StoriesIsFiltered={StoriesIsFiltered}
+                setStoriesIsFiltered={setStoriesIsFiltered}
+                minStories={minStories}
+                setMinStories={setMinStories}
+                minStoriesURL={minStoriesURL}
+                setMinStoriesURL={setMinStoriesURL}
+                maxTotalStories={maxTotalStories}
+                maxStories={maxStories}
+                setMaxStories={setMaxStories}
+                maxStoriesURL={maxStoriesURL}
+                setMaxStoriesURL={setMaxStoriesURL}
             />
             <MapContainer>
                 <List 
