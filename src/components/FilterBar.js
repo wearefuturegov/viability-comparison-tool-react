@@ -339,7 +339,7 @@ const FilterBar = ({
                         {StoriesButtonText}
                 </Button>
             </FilterContainer>
-            <Modal isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
+            <Modal className={modalType+"-modal"} isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
                 { chooseModal(modalType, handleCloseModal) }
             </Modal>
         </>

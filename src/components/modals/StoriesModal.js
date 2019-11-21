@@ -23,7 +23,7 @@ const StoriesModal = ({
 }) => {
     return (
             <ModalInner>
-                <h2>Gross Development Value (£)</h2>
+                <h2>Number of stories</h2>
                 <MinMaxInput
                     step={10}
                     toggleActiveMarker={toggleActiveMarker}

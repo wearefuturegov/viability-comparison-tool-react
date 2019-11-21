@@ -44,8 +44,8 @@ const Home = () => {
     const [maxTotalResidential, setMaxTotalResidential] = useState(0);
     
     // GDV Filter variables
-    const [minGDVURL, setMinGDVURL] = useQueryParam('min_GDV_units', NumberParam);
-    const [maxGDVURL, setMaxGDVURL] = useQueryParam('max_GDV_units', NumberParam);
+    const [minGDVURL, setMinGDVURL] = useQueryParam('min_gdv', NumberParam);
+    const [maxGDVURL, setMaxGDVURL] = useQueryParam('max_gdv', NumberParam);
     const [minGDV, setMinGDV] = useState((minGDVURL ? minGDVURL : 0));
     const [maxGDV, setMaxGDV] = useState((maxGDVURL ? maxGDVURL : 0));    
     const [GDVIsFiltered, setGDVIsFiltered] = useState(false);
