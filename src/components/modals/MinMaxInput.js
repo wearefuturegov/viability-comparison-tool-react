@@ -71,8 +71,12 @@ const MinMaxInput = ({
         updateMax(maxTotal);
         setRangeVals({min: 0, max: maxTotal})
         setMinURL(0);
+        updatemaxURL(maxTotal);
     }
 
+    function updatemaxURL(val) {
+        setMaxURL(val);
+    }
 
     useEffect(() => {
         if(document.getElementById('maxInput').value === maxTotal && document.getElementById('minInput').value === 0) {
