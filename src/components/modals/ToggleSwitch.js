@@ -58,6 +58,7 @@ class ToggleSwitch extends Component {
     state = { selected: this.props.selected };
 
     handleChange = val => {
+        this.props.toggleActiveMarker(0);
         this.setState({ selected: val });
         this.props.setCommercial(val);
         this.props.setCommercialURL((val==='with' ? 'true' : val==='without' ? 'false' : ''));

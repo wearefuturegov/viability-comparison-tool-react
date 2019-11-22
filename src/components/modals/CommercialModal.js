@@ -23,6 +23,7 @@ const ButtonBar = styled.div`
 `
 
 const CommercialModal = ({
+    toggleActiveMarker,
     handleCloseModal,
     commercial,
     setCommercial,
@@ -32,12 +33,18 @@ const CommercialModal = ({
     function handleClear() {
         setCommercial('off');
         handleCloseModal();
-        setCommercialURL('');
+        setCommercialURL(' ');
     }
     return (
             <ModalInner>
                 <h2>Show commercial space?</h2>
-                <ToggleSwitch values={['with', 'off', 'without']} selected={commercial} setCommercial={setCommercial} setCommercialURL={setCommercialURL} />
+                <ToggleSwitch 
+                    toggleActiveMarker={toggleActiveMarker}
+                    values={['with', 'off', 'without']} 
+                    selected={commercial} 
+                    setCommercial={setCommercial} 
+                    setCommercialURL={setCommercialURL} 
+                />
                 <ButtonBar>
                     <button className="clear_button" disabled={commercial === 'off'} onClick={() => handleClear()}>Clear</button>
                     <Button type="primary" onClick={handleCloseModal}>Save</Button>
