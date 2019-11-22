@@ -195,7 +195,20 @@ const FilterBar = ({
 
             // gdv setup
             if(GDVIsFiltered) {
-                setGDVButtonText('GDV filtered');
+                if (minGDV !== 0) {
+                    if (maxGDV !== maxTotalGDV) {
+                        setGDVButtonText((minGDV/1000000) + 'm - ' + (maxGDV/1000000) + 'm GDV');
+                    } else {
+                        setGDVButtonText((minGDV/1000000) + 'm+ GDV');
+                    }
+                } else {
+                    if(maxTotalGDV === maxGDV) {
+                        setGDVIsFiltered(false);
+                        setGDVButtonText('GDV');
+                    } else {
+                        setGDVButtonText('Up to ' + (maxGDV/1000000) + 'm GDV');
+                    }
+                }
             } else {
                 setGDVButtonText('GDV');
             }
