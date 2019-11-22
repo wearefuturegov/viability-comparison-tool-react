@@ -26,46 +26,50 @@
         &.stories-modal {
             left: 420px !important;
         }
+        &.commercial-modal {
+            left: 500px !important;
+        }
 
+        &:not(.commercial-modal) {
+            label {
+                font-weight: 600;
+                font-size: 18px;
+                display: inline-block;
+                width: 45%;
+                position: relative;
+                &:first-of-type {
+                    margin-right: 15px;
 
-        label {
-            font-weight: 600;
-            font-size: 18px;
-            display: inline-block;
-            width: 45%;
-            position: relative;
-            &:first-of-type {
-                margin-right: 15px;
-
-                &:after {
-                    content: '';
-                    height: 2px;
-                    width: 9px;
-                    background: #333;
-                    position: absolute;
-                    right: -13px;
-                    top: 42px;
+                    &:after {
+                        content: '';
+                        height: 2px;
+                        width: 9px;
+                        background: #333;
+                        position: absolute;
+                        right: -13px;
+                        top: 42px;
+                    }
                 }
             }
-        }
-        input {
-            display: block;
-            padding: 5px 8px;
-            border: 1px solid rgba(200, 200, 200, 0.8);
-            border-radius: 3px;
-            font-size: 18px;
-            margin-top: 5px;
+            input {
+                display: block;
+                padding: 5px 8px;
+                border: 1px solid rgba(200, 200, 200, 0.8);
+                border-radius: 3px;
+                font-size: 18px;
+                margin-top: 5px;
 
-            &:focus {
-                outline: none !important;
-                box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+                &:focus {
+                    outline: none !important;
+                    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+                }
+                &:hover {
+                    border: 1px solid rgb(180, 180, 180);
+                }
             }
-            &:hover {
-                border: 1px solid rgb(180, 180, 180);
+            input[type=number] {
+                width: 90%;
             }
-        }
-        input[type=number] {
-            width: 90%;
         }
         h2 {
             margin-top: 0;

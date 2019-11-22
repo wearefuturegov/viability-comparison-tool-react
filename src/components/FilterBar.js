@@ -8,6 +8,7 @@ import HabitableModal from './modals/HabitableModal'
 import ResidentialModal from './modals/ResidentialModal'
 import GDVModal from './modals/GDVModal'
 import StoriesModal from './modals/StoriesModal'
+import CommercialModal from './modals/CommercialModal'
 
 Modal.setAppElement('#root');
 
@@ -67,7 +68,12 @@ const FilterBar = ({
     setStoriesIsFiltered,
     maxTotalStories,
     minStoriesURL,
-    maxStoriesURL
+    maxStoriesURL,
+
+    commercial,
+    setCommercial,
+    commercialURL,
+    setCommercialURL
 }) => {
     const [openModal, setOpenModal] =  useState(false);
     const [setupFilters, changeSetupFilters] =  useState(false);
@@ -77,6 +83,7 @@ const FilterBar = ({
     const [residentialButtonText, setResidentialButtonText] = useState('Residential units');
     const [GDVButtonText, setGDVButtonText] = useState('Gross Development Value');
     const [StoriesButtonText, setStoriesButtonText] = useState('No. of stories');
+    const [CommercialButtonText, setCommercialButtonText] = useState('Commercial space');
     
     useEffect(() => {
         // HABITABLE FUNCTIONS
@@ -143,6 +150,7 @@ const FilterBar = ({
                 + '&max_gdv=' + maxGDV
                 + '&min_stories=' + minStories 
                 + '&max_stories=' + maxStories
+                + '&commercial=' + commercialURL
                 ) //add all other filters above here
             }
         }
@@ -232,6 +240,13 @@ const FilterBar = ({
             } else {
                 setStoriesButtonText('No. of stories');
             }
+
+            // commercial setup
+            if(commercial !== 'off') {
+                setCommercialButtonText(commercial.split(/\s+/).map(w => w[0].toUpperCase() + w.slice(1)).join(' ') + ' commercial space')
+            } else {
+                setCommercialButtonText('Commercial space');
+            }
         }
         
         setupFilterText();
@@ -251,7 +266,7 @@ const FilterBar = ({
     const handleCloseModal = () => {
         setOpenModal(false);
         setModalType('');
-
+        
         changeSetupFilters(setupFilters ? false : true);
     }
 
@@ -319,8 +334,16 @@ const FilterBar = ({
                     maxTotalStories={maxTotalStories}
                     setStoriesButtonText={setStoriesButtonText}
                 />;
+            case 'commercial':
+                return <CommercialModal 
+                    toggleActiveMarker={toggleActiveMarker}
+                    handleCloseModal={closeFunction}
+                    commercial={commercial}
+                    setCommercial={setCommercial}
+                    setCommercialURL={setCommercialURL}
+                />;
             default:
-                return <p>this would be all filters</p>;
+                return <p>Filter error</p>;
         }
     }
 
@@ -351,8 +374,20 @@ const FilterBar = ({
                     onClick={() => handleOpenModal('stories')}>
                         {StoriesButtonText}
                 </Button>
+                <Button 
+                    type={'filterBtn ' + (commercial==='off' ? '' : 'primary')} 
+                    disabled={loading} 
+                    onClick={() => handleOpenModal('commercial')}>
+                        {CommercialButtonText}
+                </Button>
             </FilterContainer>
-            <Modal className={modalType+"-modal"} isOpen={openModal} onRequestClose={handleCloseModal} shouldCloseOnOverlayClick={true} contentLabel="Number of habitable rooms filter">
+            <Modal 
+                    className={modalType+"-modal"} 
+                    isOpen={openModal} 
+                    onRequestClose={handleCloseModal} 
+                    shouldCloseOnOverlayClick={true} 
+                    contentLabel={modalType + " filter"}
+                >
                 { chooseModal(modalType, handleCloseModal) }
             </Modal>
         </>

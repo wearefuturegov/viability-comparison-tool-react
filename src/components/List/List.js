@@ -26,7 +26,11 @@ const List = ({
 				offset: -50
 			});
 		}
-    }, [activeMarker, scroller]);
+	}, [activeMarker, scroller]);
+	
+	function addCommas(val) {
+		return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	
 	return(		
 		<ul className="list-container" id="sidebar">
@@ -51,12 +55,12 @@ const List = ({
 						<h3>{marker.attributes.name}</h3>
 						<div className="list-item__description">
 							<p><span className="bold">Completed:</span> { marker.attributes.date_submitted ? marker.attributes.date_submitted : 'No date recorded' }</p>
-							<p><span className="bold">Habitable rooms:</span> {marker.attributes.habitable_rooms}</p>
-							<p><span className="bold">Residential units:</span> {marker.attributes.residential_units}</p>
+							<p><span className="bold">Habitable rooms:</span> {addCommas(marker.attributes.habitable_rooms)}</p>
+							<p><span className="bold">Residential units:</span> {addCommas(marker.attributes.residential_units)}</p>
 							{ marker.attributes.commercial_area_square_centimetres ?
-								<p><span className="bold">Commercial space:</span> {marker.attributes.commercial_area_square_centimetres}m&sup2;</p>
+								<p><span className="bold">Commercial space:</span> {addCommas(marker.attributes.commercial_area_square_centimetres)}m&sup2;</p>
 							:null}
-							<p><span className="bold">GDV:</span> {(marker.attributes.gross_development_value_pence/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+							<p><span className="bold">GDV:</span> {addCommas(marker.attributes.gross_development_value_pence/100)}</p>
 							<p><span className="bold">Number of stories:</span> {marker.attributes.stories}</p>
 							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
 						</div>

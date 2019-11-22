@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DisplayMap from '../DisplayMap/DisplayMap'
 import List from '../../components/List/List'
 import FilterBar from '../../components/FilterBar'
-import { useQueryParam, NumberParam } from 'use-query-params';
+import { useQueryParam, NumberParam, StringParam } from 'use-query-params';
 
 const MapContainer = styled.div`
     width: 100%;
@@ -58,6 +58,10 @@ const Home = () => {
     const [maxStories, setMaxStories] = useState((maxStoriesURL ? maxStoriesURL : 0));    
     const [StoriesIsFiltered, setStoriesIsFiltered] = useState(false);
     const [maxTotalStories, setMaxTotalStories] = useState(0);
+
+    // Commercial vars
+    const [commercial, setCommercial] = useState('off');
+    const [commercialURL, setCommercialURL] = useQueryParam('commercial', StringParam);
 
     useEffect(() => {
 		if (viabilityData.meta) {
@@ -135,6 +139,12 @@ const Home = () => {
                 setMaxStories={setMaxStories}
                 maxStoriesURL={maxStoriesURL}
                 setMaxStoriesURL={setMaxStoriesURL}
+
+                //Commercial filters
+                commercial={commercial}
+                setCommercial={setCommercial}
+                commercialURL={commercialURL}
+                setCommercialURL={setCommercialURL}
             />
             <MapContainer>
                 <List 
