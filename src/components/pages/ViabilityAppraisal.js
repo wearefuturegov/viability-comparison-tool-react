@@ -34,12 +34,15 @@ const ViabilityAppraisal = () => {
                         <li>Date submitted: {chosenDevelopment.attributes.date_submitted}</li>
                         <li>GDV: £{chosenDevelopment.attributes.gross_development_value_pence/100}</li>
                         <li>Construction Costs: £{chosenDevelopment.attributes.construction_costs_pence/100}</li>
+                        <li>Stories: {chosenDevelopment.attributes.stories}</li>
                         <li>Professional Fees: £{chosenDevelopment.attributes.professional_fees_pence/100}</li>
                         <li>Marketing and letting Fees: £{chosenDevelopment.attributes.marketing_and_letting_pence/100}</li>
+                        <li>Finance Percentage: {chosenDevelopment.attributes.finance_as_percentage_of_gdv}%</li>
                         <li>Finance: £{chosenDevelopment.attributes.finance_pence/100}</li>
                         <li>Financial planning obligations: £{chosenDevelopment.attributes.financial_planning_obligations_pence/100}</li>
+                       
+                        <li>Developer Profit Percentage: {chosenDevelopment.attributes.developer_profit_as_percentage_of_gdv}%</li>
                         <li>Developer Profit: £{chosenDevelopment.attributes.developer_profit_pence/100}</li>
-
                         <li>Residual Land Value: £{chosenDevelopment.attributes.residual_land_value_pence/100}</li>
                         <li>Benchmark Land Value: £{chosenDevelopment.attributes.benchmark_land_value_pence/100}</li>
                         <li>Residential Units: {chosenDevelopment.attributes.residential_units}</li>
