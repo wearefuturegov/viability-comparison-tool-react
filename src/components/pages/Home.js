@@ -74,8 +74,8 @@ const Home = () => {
             setMaxTotalGDV(Math.ceil(viabilityData.meta.gdv_pounds_max/1000)*1000);
             setMaxGDV(maxGDVURL ? maxGDVURL : (Math.ceil(viabilityData.meta.gdv_pounds_max/1000)*1000));
 
-            setMaxTotalStories(Math.ceil(viabilityData.meta.stories_max/100)*100);
-            setMaxStories(maxStoriesURL ? maxStoriesURL : Math.ceil(viabilityData.meta.stories_max/100)*100);
+            setMaxTotalStories(Math.ceil(viabilityData.meta.stories_max/10)*10);
+            setMaxStories(maxStoriesURL ? maxStoriesURL : Math.ceil(viabilityData.meta.stories_max/10)*10);
 		}
     }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV, setMaxTotalStories]);
     
