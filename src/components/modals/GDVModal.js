@@ -25,7 +25,7 @@ const GDVModal = ({
             <ModalInner>
                 <h2>Gross Development Value (£)</h2>
                 <MinMaxInput
-                    step={1000}
+                    step={1000000}
                     toggleActiveMarker={toggleActiveMarker}
                     handleCloseModal={handleCloseModal}
                     min={minGDV}
