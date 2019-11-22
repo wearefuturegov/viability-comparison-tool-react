@@ -75,8 +75,8 @@ const FilterBar = ({
 
     const [habitableButtonText, setHabitableButtonText] = useState('Habitable rooms');
     const [residentialButtonText, setResidentialButtonText] = useState('Residential units');
-    const [GDVButtonText, setGDVButtonText] = useState('GDV');
-    const [StoriesButtonText, setStoriesButtonText] = useState('Stories');
+    const [GDVButtonText, setGDVButtonText] = useState('Gross Development Value');
+    const [StoriesButtonText, setStoriesButtonText] = useState('No. of stories');
     
     useEffect(() => {
         // HABITABLE FUNCTIONS
@@ -204,13 +204,13 @@ const FilterBar = ({
                 } else {
                     if(maxTotalGDV === maxGDV) {
                         setGDVIsFiltered(false);
-                        setGDVButtonText('GDV');
+                        setGDVButtonText('Gross Development Value');
                     } else {
                         setGDVButtonText('Up to ' + (maxGDV/1000000) + 'm GDV');
                     }
                 }
             } else {
-                setGDVButtonText('GDV');
+                setGDVButtonText('Gross Development Value');
             }
 
             // stories setup
@@ -224,13 +224,13 @@ const FilterBar = ({
                 } else {
                     if(maxTotalStories === maxStories) {
                         setStoriesIsFiltered(false);
-                        setStoriesButtonText('Stories');
+                        setStoriesButtonText('No. of stories');
                     } else {
                         setStoriesButtonText('Up to ' + maxStories + ' stories');
                     }
                 }
             } else {
-                setStoriesButtonText('Stories');
+                setStoriesButtonText('No. of stories');
             }
         }
         

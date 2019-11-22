@@ -49,7 +49,17 @@ const List = ({
 						onMouseLeave={() => {toggleHoverMarker(0)} }
 					>
 						<h3>{marker.attributes.name}</h3>
-						<Link tabIndex="-1" to={"/viability_appraisals/"+marker.id}><Button>View viability apprasial</Button></Link>
+						<div className="list-item__description">
+							<p><span className="bold">Completed:</span> { marker.attributes.date_submitted ? marker.attributes.date_submitted : 'No date recorded' }</p>
+							<p><span className="bold">Habitable rooms:</span> {marker.attributes.habitable_rooms}</p>
+							<p><span className="bold">Residential units:</span> {marker.attributes.residential_units}</p>
+							{ marker.attributes.commercial_area_square_centimetres ?
+								<p><span className="bold">Commercial space:</span> {marker.attributes.commercial_area_square_centimetres}m&sup2;</p>
+							:null}
+							<p><span className="bold">GDV:</span> {(marker.attributes.gross_development_value_pence/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+							<p><span className="bold">Number of stories:</span> {marker.attributes.stories}</p>
+							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
+						</div>
 					</li>        
 				))
 			}
