@@ -66,8 +66,16 @@
         display: inline-block;
         color: #046F9E;
         font-weight: 500;
+        padding: 3px;
+        padding-right: 10px;
+        border-radius: 3px;
 
-        &:hover {
+        &:focus {
+          outline: none !important;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 4px #046F9E !important;
+        }
+
+        &:hover, &:focus {
           &:after {
             left: 0.45em;
           }
