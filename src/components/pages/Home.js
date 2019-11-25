@@ -87,7 +87,8 @@ const Home = () => {
         } else {
             fetchData(API, filters, setViabilityData, setLoading, setErrors);
         }
-    }, [filters]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [filters]);
 
     useEffect(() => {
 		if (viabilityData.meta) {
@@ -103,7 +104,8 @@ const Home = () => {
             setMaxTotalStories(Math.ceil(viabilityData.meta.stories_max/10)*10);
             setMaxStories(maxStoriesURL ? maxStoriesURL : Math.ceil(viabilityData.meta.stories_max/10)*10);
 		}
-    }, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV, setMaxTotalStories]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [viabilityData, setMaxTotalHabitable, setMaxTotalResidential, setMaxTotalGDV, setMaxTotalStories]);
     
 
 

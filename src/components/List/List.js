@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import { Link } from 'react-router-dom'
 import "./list.scss";
 import * as Scroll from 'react-scroll';
-import Button from '../Button';
 
 const List = ({
 		loading, 
