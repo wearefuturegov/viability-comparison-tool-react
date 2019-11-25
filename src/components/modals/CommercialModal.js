@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import 'react-input-range/lib/css/index.css';
 import ToggleSwitch from './ToggleSwitch'
@@ -31,9 +31,9 @@ const CommercialModal = ({
 }) => {
 
     function handleClear() {
-        setCommercial('off');
         handleCloseModal();
-        setCommercialURL(' ');
+        setCommercialURL('off');
+        setCommercial('off');
     }
     return (
             <ModalInner>

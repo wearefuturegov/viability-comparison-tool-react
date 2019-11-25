@@ -52,16 +52,16 @@ const Home = () => {
     const [maxTotalGDV, setMaxTotalGDV] = useState(0);
 
     // Stories Filter variables
-    const [minStoriesURL, setMinStoriesURL] = useQueryParam('min_Stories_units', NumberParam);
-    const [maxStoriesURL, setMaxStoriesURL] = useQueryParam('max_Stories_units', NumberParam);
+    const [minStoriesURL, setMinStoriesURL] = useQueryParam('min_stories', NumberParam);
+    const [maxStoriesURL, setMaxStoriesURL] = useQueryParam('max_stories', NumberParam);
     const [minStories, setMinStories] = useState((minStoriesURL ? minStoriesURL : 0));
     const [maxStories, setMaxStories] = useState((maxStoriesURL ? maxStoriesURL : 0));    
     const [StoriesIsFiltered, setStoriesIsFiltered] = useState(false);
     const [maxTotalStories, setMaxTotalStories] = useState(0);
 
     // Commercial vars
-    const [commercial, setCommercial] = useState('off');
     const [commercialURL, setCommercialURL] = useQueryParam('commercial', StringParam);
+    const [commercial, setCommercial] = useState((commercialURL ? (commercialURL === 'true' ? 'with' : 'without') : 'off'));
 
     useEffect(() => {
 		if (viabilityData.meta) {
