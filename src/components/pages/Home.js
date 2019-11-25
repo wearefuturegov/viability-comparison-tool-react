@@ -19,13 +19,10 @@ const Home = () => {
     const [loading, setLoading] =  useState(true);
     const [hoverMarker, toggleHoverMarker] = useState(0);
     const [hasError, setErrors] =  useState(false)
-    const API = 'https://viability-comparison-api.herokuapp.com/viability_appraisals'
-    const [filters, setFilters] = useState('?');
 
     // HERE TODO ******
     // TWO PROBLEMS:
-    // 1 - clear buttons dont seem to be working properly
-    // 2 - first load of page with filters does not filter the properties down
+    // 1 - clear buttons dont seem to be working properly in particular with max vars
 
     // Habitable Filter variables
     const [minHabitableURL, setMinHabitableURL] = useQueryParam('min_habitable_rooms', NumberParam);
@@ -62,20 +59,28 @@ const Home = () => {
     // Commercial vars
     const [commercialURL, setCommercialURL] = useQueryParam('commercial', StringParam);
     const [commercial, setCommercial] = useState((commercialURL ? (commercialURL === 'true' ? 'with' : 'without') : 'off'));
+    
+    
+    
+    
+    // API CALL 
+    const API = 'https://viability-comparison-api.herokuapp.com/viability_appraisals'
+    const [filters, setFilters] = useState('?' 
+    + 'min_habitable_rooms=' + (minHabitableURL ? minHabitableURL : '')
+    + '&max_habitable_rooms=' + (maxHabitableURL ? maxHabitableURL : '')
+    + '&min_residential_units=' + (minResidentialURL ? minResidentialURL : '') 
+    + '&max_residential_units=' + (maxResidentialURL ? maxResidentialURL : '')
+    + '&min_gdv=' + (minGDVURL ? minGDVURL : '')
+    + '&max_gdv=' + (maxGDVURL ? maxGDVURL : '')
+    + '&min_stories=' + (minStoriesURL ? minStoriesURL : '')
+    + '&max_stories=' + (maxStoriesURL ? maxStoriesURL : '')
+    + '&commercial=' + (commercialURL ? commercialURL : '')
+    );
 
     useEffect(() => {
         if(minHabitableURL || maxHabitableURL || minResidentialURL || maxResidentialURL || minGDVURL || maxGDVURL || minStoriesURL || maxStoriesURL) {
             fetchData(API, 
-                ('?' 
-                + 'min_habitable_rooms=' + (minHabitableURL ? minHabitableURL : '')
-                + '&max_habitable_rooms=' + (maxHabitableURL ? maxHabitableURL : '')
-                + '&min_residential_units=' + (minResidentialURL ? minResidentialURL : '') 
-                + '&max_residential_units=' + (maxResidentialURL ? maxResidentialURL : '')
-                + '&min_gdv=' + (minGDVURL ? minGDVURL : '')
-                + '&max_gdv=' + (maxGDVURL ? maxGDVURL : '')
-                + '&min_stories=' + minStoriesURL
-                + '&max_stories=' + maxStoriesURL
-                + '&commercial=' + commercialURL),
+                filters,
                 setViabilityData, 
                 setLoading, 
                 setErrors);
