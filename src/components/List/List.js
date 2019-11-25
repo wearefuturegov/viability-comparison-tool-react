@@ -61,7 +61,7 @@ const List = ({
 								<p><span className="bold">Commercial space:</span> {addCommas(marker.attributes.commercial_area_square_centimetres)}m&sup2;</p>
 							:null}
 							<p><span className="bold">GDV:</span> {addCommas(marker.attributes.gross_development_value_pence/100)}</p>
-							<p><span className="bold">Number of stories:</span> {marker.attributes.stories}</p>
+							<p><span className="bold">Number of storeys:</span> {marker.attributes.stories}</p>
 							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
 						</div>
 					</li>        
