@@ -25,7 +25,7 @@ const StoriesModal = ({
             <ModalInner>
                 <h2>Number of stories</h2>
                 <MinMaxInput
-                    step={10}
+                    step={5}
                     toggleActiveMarker={toggleActiveMarker}
                     handleCloseModal={handleCloseModal}
                     min={minStories}
