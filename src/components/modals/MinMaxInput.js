@@ -70,9 +70,9 @@ const MinMaxInput = ({
         updateMin(0);
         updateMax(maxTotal);
         setRangeVals({min: 0, max: maxTotal})
-        setMinURL(0);
-        updatemaxURL(maxTotal);
-        handleCloseModal();
+        // setMinURL(0);
+        // updatemaxURL(maxTotal);
+        // handleCloseModal();
     }
 
     function updatemaxURL(val) {

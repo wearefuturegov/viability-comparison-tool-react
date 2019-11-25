@@ -74,7 +74,7 @@ const Home = () => {
     + '&max_gdv=' + (maxGDVURL ? maxGDVURL : '')
     + '&min_stories=' + (minStoriesURL ? minStoriesURL : '')
     + '&max_stories=' + (maxStoriesURL ? maxStoriesURL : '')
-    + '&commercial=' + (commercialURL ? commercialURL : '')
+    + '&commercial=' + (commercialURL === true ? commercialURL : commercialURL === false ? commercialURL : 'off')
     );
 
     useEffect(() => {

@@ -93,7 +93,7 @@ const FilterBar = ({
             if(maxHabitableURL !== maxTotalHabitable || minHabitableURL !== 0) {
                 setHabitableIsFiltered(true);
                 setMinHabitableURL(minHabitable);
-                setMaxHabitableURL(maxHabitable);
+                // setMaxHabitableURL(maxHabitable);
             }
         }
 
@@ -104,7 +104,7 @@ const FilterBar = ({
             if(maxResidentialURL !== maxTotalResidential || minResidentialURL !== 0) {
                 setResidentialIsFiltered(true);
                 setMinResidentialURL(minResidential);
-                setMaxResidentialURL(maxResidential);
+                // setMaxResidentialURL(maxResidential);
             }
         }
 
@@ -115,7 +115,7 @@ const FilterBar = ({
             if(maxGDVURL !== maxTotalGDV || minGDVURL !== 0) {
                 setGDVIsFiltered(true);
                 setMinGDVURL(minGDV);
-                setMaxGDVURL(maxGDV);
+                // setMaxGDVURL(maxGDV);
             }
         }
 
@@ -126,7 +126,7 @@ const FilterBar = ({
             if(maxStoriesURL !== maxTotalStories || minStoriesURL !== 0) {
                 setStoriesIsFiltered(true);
                 setMinStoriesURL(minStories);
-                setMaxStoriesURL(maxStories);
+                // setMaxStoriesURL(maxStories);
             }
         }
 
@@ -252,8 +252,6 @@ const FilterBar = ({
         setupFilterText();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [habitableIsFiltered, setupFilters, maxTotalHabitable, setHabitableIsFiltered, maxTotalResidential, setResidentialIsFiltered]);
-
-
 
 
     function handleOpenModal(type) {
