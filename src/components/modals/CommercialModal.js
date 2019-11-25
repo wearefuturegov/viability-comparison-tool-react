@@ -30,11 +30,12 @@ const CommercialModal = ({
     setCommercialURL
 }) => {
 
-    function handleClear() {
-        handleCloseModal();
-        setCommercialURL('off');
-        setCommercial('off');
-    }
+    // function handleClear() {
+    //     handleCloseModal();
+        
+    //     setCommercialURL('off');
+    //     setCommercial('off');
+    // }
     return (
             <ModalInner>
                 <h2>Show commercial space?</h2>
@@ -46,7 +47,7 @@ const CommercialModal = ({
                     setCommercialURL={setCommercialURL} 
                 />
                 <ButtonBar>
-                    <button className="clear_button" disabled={commercial === 'off'} onClick={() => handleClear()}>Clear</button>
+                    {/* <button className="clear_button" disabled={commercial === 'off'} onClick={() => handleClear()}>Clear</button> */}
                     <Button type="primary" onClick={handleCloseModal}>Save</Button>
                 </ButtonBar>
             </ModalInner>
