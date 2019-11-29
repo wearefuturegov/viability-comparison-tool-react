@@ -61,7 +61,7 @@ const List = ({
 							:null}
 							<p><span className="bold">Affordable housing:</span> {marker.attributes.affordable_housing_percentage}%</p>
               <p><span className="bold">Developer profit (% of GDV):</span> {marker.attributes.developer_profit_as_percentage_of_gdv}%</p>
-							<p><span className="bold">Number of storeys:</span> {marker.attributes.stories}</p>
+							<p><span className="bold">Max number of storeys:</span> {marker.attributes.stories}</p>
 							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
 						</div>
 					</li>        
