@@ -59,7 +59,8 @@ const List = ({
 							{ marker.attributes.commercial_area_square_centimetres ?
 								<p><span className="bold">Commercial space:</span> {addCommas(marker.attributes.commercial_area_square_centimetres)}m&sup2;</p>
 							:null}
-							<p><span className="bold">GDV:</span> {addCommas(marker.attributes.gross_development_value_pence/100)}</p>
+							<p><span className="bold">Affordable housing:</span> {marker.attributes.affordable_housing_percentage}%</p>
+              <p><span className="bold">Developer profit (% of GDV):</span> {marker.attributes.developer_profit_as_percentage_of_gdv}%</p>
 							<p><span className="bold">Number of storeys:</span> {marker.attributes.stories}</p>
 							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
 						</div>
