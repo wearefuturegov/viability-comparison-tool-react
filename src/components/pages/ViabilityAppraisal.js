@@ -44,7 +44,6 @@ const ViabilityAppraisal = () => {
                         <li>Financial planning obligations: £{chosenDevelopment.attributes.financial_planning_obligations_pence/100}</li>
                        
                         <li>Developer Profit (% of GDV): {chosenDevelopment.attributes.developer_profit_as_percentage_of_gdv}%</li>
-                        <li>Developer Profit: £{chosenDevelopment.attributes.developer_profit_pence/100}</li>
                         <li>Residual Land Value: £{chosenDevelopment.attributes.residual_land_value_pence/100}</li>
                         <li>Benchmark Land Value: £{chosenDevelopment.attributes.benchmark_land_value_pence/100}</li>
                         <li>Residential Units: {chosenDevelopment.attributes.residential_units}</li>
