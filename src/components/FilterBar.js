@@ -225,20 +225,20 @@ const FilterBar = ({
             if(StoriesIsFiltered) {
                 if (minStories !== 0) {
                     if (maxStories !== maxTotalStories) {
-                        setStoriesButtonText(minStories + ' - ' + maxStories + ' stories');
+                        setStoriesButtonText(minStories + ' - ' + maxStories + ' storeys');
                     } else {
                         setStoriesButtonText(minStories + '+ stories');
                     }
                 } else {
                     if(maxTotalStories === maxStories) {
                         setStoriesIsFiltered(false);
-                        setStoriesButtonText('No. of stories');
+                        setStoriesButtonText('No. of storeys');
                     } else {
-                        setStoriesButtonText('Up to ' + maxStories + ' stories');
+                        setStoriesButtonText('Up to ' + maxStories + ' storeys');
                     }
                 }
             } else {
-                setStoriesButtonText('No. of stories');
+                setStoriesButtonText('No. of storeys');
             }
 
             // commercial setup
