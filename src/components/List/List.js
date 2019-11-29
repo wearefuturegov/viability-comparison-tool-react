@@ -53,7 +53,7 @@ const List = ({
 					>
 						<h3>{marker.attributes.name}</h3>
 						<div className="list-item__description">
-							<p><span className="bold">Completed:</span> { marker.attributes.date_submitted ? marker.attributes.date_submitted : 'No date recorded' }</p>
+							<p><span className="bold">Date submitted:</span> { marker.attributes.date_submitted ? marker.attributes.date_submitted : 'No date recorded' }</p>
 							<p><span className="bold">Habitable rooms:</span> {addCommas(marker.attributes.habitable_rooms)}</p>
 							<p><span className="bold">Residential units:</span> {addCommas(marker.attributes.residential_units)}</p>
 							{ marker.attributes.commercial_area_square_centimetres ?
