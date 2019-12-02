@@ -41,7 +41,6 @@ const ViabilityAppraisal = () => {
                         <li>Max number of storeys: {chosenDevelopment.attributes.stories}</li>
                         <li>Professional Fees (% of construction costs): {chosenDevelopment.attributes.professional_fees_as_percentage_of_construction_costs}%</li>
                         <li>Marketing and letting Fees (% of construction costs): {chosenDevelopment.attributes.marketing_and_letting_as_percentage_of_construction_costs}%</li>
-                        <li>Finance (% of GDV): {chosenDevelopment.attributes.finance_as_percentage_of_gdv}%</li>
                         <li>Finance: £{addCommas(chosenDevelopment.attributes.finance_pence/100)}</li>
                         <li>Financial planning obligations: £{addCommas(chosenDevelopment.attributes.financial_planning_obligations_pence/100)}</li>
                        
