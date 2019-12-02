@@ -52,6 +52,8 @@ const ViabilityAppraisal = () => {
                         <li>Habitable Rooms: {chosenDevelopment.attributes.habitable_rooms}</li>
                         <li>Commercial Area: {addCommas(chosenDevelopment.attributes.commercial_area_square_centimetres/100)}m&sup2;</li>
                         <li>Affordable housing percentage: {chosenDevelopment.attributes.affordable_housing_percentage}%</li>
+                        
+                        <li>Application Reference: {chosenDevelopment.attributes.application}</li>
                     </ul> 
                     <SingleMap lat={chosenDevelopment.attributes.latitude} long={chosenDevelopment.attributes.longitude} boundaries={chosenDevelopment.attributes.boundary} />
                     </>
