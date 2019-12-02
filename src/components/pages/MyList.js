@@ -26,6 +26,7 @@ const MyList = () => {
     return (
         <>
         <Header myList={null} />
+        <BackLink />
         <h1>Your comparison list</h1>
         { loading === true ? (
             <p>Loading...</p>
