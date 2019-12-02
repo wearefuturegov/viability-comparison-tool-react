@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 import './App.scss';
 
-import Header from './components/Header';
-
 import Home from './components/pages/Home';
 import ViabilityAppraisal from './components/pages/ViabilityAppraisal';
+import MyList from './components/pages/MyList';
 
 class App extends React.Component {
   render() {
@@ -21,10 +20,10 @@ class App extends React.Component {
       <Router>
         <QueryParamProvider ReactRouterRoute={Route}>
 
-          <Header />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/viability_appraisals/:id" exact component={ViabilityAppraisal}></Route>
+            <Route path="/comparison-list/" exact component={MyList}></Route>
 
             <Route component={NotFound} />
           </Switch>

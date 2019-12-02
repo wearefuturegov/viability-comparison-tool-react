@@ -4,6 +4,7 @@ import DisplayMap from '../DisplayMap/DisplayMap'
 import List from '../../components/List/List'
 import FilterBar from '../../components/FilterBar'
 import { useQueryParam, NumberParam, StringParam } from 'use-query-params';
+import Header from '../Header';
 
 const MapContainer = styled.div`
     width: 100%;
@@ -18,7 +19,21 @@ const Home = () => {
     const [viabilityData, setViabilityData] = useState([]);
     const [loading, setLoading] =  useState(true);
     const [hoverMarker, toggleHoverMarker] = useState(0);
-    const [hasError, setErrors] =  useState(false)
+    const [hasError, setErrors] =  useState(false);
+
+    const [myList, setmyList] = useState(
+        localStorage.getItem('my_comparison_list') || ''
+	);
+
+	useEffect(() => {
+        if (myList) {
+            console.log('mylist = ' + myList)
+            localStorage.setItem('my_comparison_list', myList);
+        } else {
+            localStorage.removeItem('my_comparison_list');
+        }
+    }, [myList]);
+    
 
     // HERE TODO ******
     // TWO PROBLEMS:
@@ -111,6 +126,7 @@ const Home = () => {
 
     return(
         <>
+            <Header myList={myList} />
             <FilterBar 
                 toggleActiveMarker={toggleActiveMarker}
                 setFilters={setFilters}
@@ -184,7 +200,8 @@ const Home = () => {
                     hoverMarker={hoverMarker} 
                     toggleHoverMarker={toggleHoverMarker}
                     hasError={hasError}
-
+                    myList={myList}
+                    setmyList={setmyList}
                 />
 
                 <DisplayMap 

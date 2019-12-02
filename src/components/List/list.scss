@@ -30,25 +30,34 @@
     background: #fff;
     opacity: 0.9;
     border-radius: 2px;
-
+    &.on-list {
+      background: rgba(#eee, 0.5);
+    }
     &:hover, &.hovered {
         cursor: pointer;
         background: #eee;
         opacity: 1;
     }
+    
     &:last-child {
         margin-bottom: 0;
     }
     &.active {
-        background: #046F9E;
-        border-color: #046F9E;
-        color: #fff;
+        // background: #046F9E;
+        background: #eee;
+        outline: 3px solid #046F9E;
+        // color: #fff;
         opacity: 1;
         cursor: default;
         a {
-          color: #fff !important;
+          // color: #fff !important;
+        }
+        button.primary {
+          // background: #fff;
+          // color: #046F9E;
         }
     }
+
 
     h3 {
       margin-top: 0;

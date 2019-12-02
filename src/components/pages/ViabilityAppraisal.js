@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import BackLink from '../BackLink'
 import SingleMap from '../DisplayMap/SingleMap'
+import Header from '../Header';
 
 const SingleViability = styled.div`
     width: 100%;
@@ -24,6 +25,8 @@ const ViabilityAppraisal = () => {
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     return (
+        <>
+        <Header />
         <SingleViability>
             <BackLink />
             { loading === true ? (
@@ -63,6 +66,7 @@ const ViabilityAppraisal = () => {
 				<p>Sorry there was an error fetching the results, please try again.</p>
 			}
         </SingleViability>
+        </>
     )
 }
 

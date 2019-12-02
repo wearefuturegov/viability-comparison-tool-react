@@ -2,19 +2,38 @@ import React, {useEffect} from "react";
 import { Link } from 'react-router-dom'
 import "./list.scss";
 import * as Scroll from 'react-scroll';
+import ListButton from '../ListButton';
+import styled from 'styled-components';
+
+const HeadInfo = styled.div`
+	margin-bottom: 15px;
+	position relative;
+
+	h3 {
+		display: inline-block;
+		margin: 0;
+		max-width: 171px;
+	}
+	button {
+		position: absolute;
+		right: 0;
+	}
+`
 
 const List = ({
 		loading, 
 		markersData, 
-		metaData,
 		activeMarker, 
 		toggleActiveMarker, 
 		hoverMarker, 
 		toggleHoverMarker, 
 		hasError, 
+		myList,
+		setmyList
 	}) => {	
 
 	var scroller = Scroll.scroller;
+    var listArray = myList.split(',');
 
 	useEffect(() => {
 		if(activeMarker !== 0) {
@@ -46,12 +65,15 @@ const List = ({
 					<li 
 						key={marker.id} 
 						name={'scroll'+marker.id}
-						className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "")} 
+						className={"list-item " + (activeMarker === marker.id ? "active" : "") + (hoverMarker === marker.id ? " hovered" : "") + (listArray.indexOf(marker.id) !== -1 ? " on-list" : "")} 
 						onClick={() => { toggleActiveMarker(marker.id)} }
 						onMouseEnter={() => {toggleHoverMarker(marker.id)} }
 						onMouseLeave={() => {toggleHoverMarker(0)} }
 					>
-						<h3>{marker.attributes.name}</h3>
+						<HeadInfo>
+							<h3>{marker.attributes.name}</h3>
+							<ListButton myList={myList} setmyList={setmyList} id={marker.id} type="small" />
+						</HeadInfo>
 						<div className="list-item__description">
 							<p><span className="bold">Date submitted:</span> { marker.attributes.date_submitted ? marker.attributes.date_submitted : 'No date recorded' }</p>
 							<p><span className="bold">Habitable rooms:</span> {addCommas(marker.attributes.habitable_rooms)}</p>
