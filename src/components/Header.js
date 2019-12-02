@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 
 const StyledHeader = styled.div`
-    width: 100%;
+    width: calc(100% - 15px);
     background: #046F9E;
     height: 51px;
     z-index: 999;
