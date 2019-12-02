@@ -29,7 +29,7 @@ const ViabilityAppraisal = () => {
             localStorage.removeItem('my_comparison_list');
         }
     }, [myList]);
-    
+
 
     useEffect(() => {
         fetchData("https://viability-comparison-api.herokuapp.com/", window.location.pathname, setChosenDevelopment, setLoading, setErrors)
@@ -41,7 +41,7 @@ const ViabilityAppraisal = () => {
     }
     return (
         <>
-        <Header />
+        <Header myList={myList} />
         <SingleViability>
             <BackLink />
             { loading === true ? (
