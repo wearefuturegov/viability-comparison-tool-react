@@ -19,6 +19,9 @@ const StyledBackLink = styled.a`
             margin-left: 10px;
         }
     }
+    svg {
+        vertical-align: middle;
+    }
 `
 const BackLinkContainer = styled.div`
     margin-top: 10px;
