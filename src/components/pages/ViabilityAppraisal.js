@@ -31,7 +31,7 @@ const SingleViability = styled.div`
     .single-page-map {
         margin-top: 50px;
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 42px;
     }
     hr {
         margin-top: 20px;
