@@ -26,6 +26,10 @@ const StyledButton = styled.button`
         font-size: 15px;
         margin-right: 15px;
         padding: 3px 10px 4px 10px;
+
+        &.clear {
+            border-color: #909090;
+        }
     }
 
     &.primary {
@@ -58,6 +62,10 @@ const StyledButton = styled.button`
         border: 2px solid #eee;
         color: #121212;
         cursor: no-drop;
+    }
+    a {
+        color: #000;
+        text-decoration: none;
     }
 `
 

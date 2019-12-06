@@ -4,6 +4,8 @@ import "./list.scss";
 import * as Scroll from 'react-scroll';
 import ListButton from '../ListButton';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 const HeadInfo = styled.div`
 	margin-bottom: 15px;
@@ -84,7 +86,10 @@ const List = ({
 							<p><span className="bold">Affordable housing:</span> {marker.attributes.affordable_housing_percentage}%</p>
               <p><span className="bold">Developer profit (% of GDV):</span> {marker.attributes.developer_profit_as_percentage_of_gdv}%</p>
 							<p><span className="bold">Max number of storeys:</span> {marker.attributes.stories}</p>
-							<Link to={"/viability_appraisals/"+marker.id}>View all details</Link>
+							<Link to={"/viability_appraisals/"+marker.id}>
+								<span>View all details</span>
+								<FontAwesomeIcon icon={faAngleRight} />
+							</Link>
 						</div>
 					</li>        
 				))

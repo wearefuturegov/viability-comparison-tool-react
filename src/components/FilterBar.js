@@ -26,7 +26,7 @@ const FilterContainer = styled.div`
 `
 
 const FilterInnerContainer = styled.div`
-    width: 920px;
+    width: 1150px;
 `
 const FilterBar = ({
     toggleActiveMarker,
@@ -391,6 +391,9 @@ const FilterBar = ({
                         onClick={() => handleOpenModal('gdv')}>
                             {GDVButtonText}
                     </Button>
+                    { habitableIsFiltered || residentialIsFiltered || StoriesIsFiltered || commercial==='on' || GDVIsFiltered ?
+                        <Button disabled={loading} type={'filterBtn clear'}><a href="/" title="Clear all filters">Clear filters</a></Button>
+                    :null}
                 </FilterInnerContainer>
             </FilterContainer>
             <Modal 
