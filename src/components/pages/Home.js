@@ -9,7 +9,7 @@ import AlphaBar from '../AlphaBar';
 
 const MapContainer = styled.div`
     width: 100%;
-    height: calc(100vh - 99px);
+    height: calc(100% - 99px);
     position: absolute;
     bottom: 0;
 `
