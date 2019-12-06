@@ -19,6 +19,10 @@ const StyledHeader = styled.div`
         display: inline-block;
         vertical-align: middle;
     }
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
     .myListButton {
         color: #046F9E;
         background-color: #fff;
@@ -35,7 +39,7 @@ const StyledHeader = styled.div`
 const Header = ({myList}) => {
     return (
         <StyledHeader>
-            <h1>Viability Compare Tool</h1>
+            <h1><a href="/" title="Go home">Viability Compare Tool</a></h1>
             { myList && 
             <>
                 { myList.length > 0 ?
