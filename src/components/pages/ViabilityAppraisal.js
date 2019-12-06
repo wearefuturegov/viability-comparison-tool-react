@@ -14,6 +14,7 @@ const SingleViability = styled.div`
 
     h1 { 
         display: inline-block;
+        margin-top: 15px;
     }
     button {
         float: right;

@@ -6,11 +6,12 @@ import ListButton from '../ListButton';
 import LoadingScreen from '../LoadingScreen';
 
 const Container = styled.div`
-    width: 100%;
+    width: calc(100% - 30px);
     margin: 0 auto;
     padding: 0 15px;
     h1 {
         margin-bottom: 0;
+        margin-top: 15px;
     }
 `
 const TableContainer = styled.div`
@@ -27,7 +28,7 @@ const ComparisonTableHead = styled.div`
 const ComparisonList = styled.div`
     margin-left: 227px;
     overflow-x: scroll;
-    width: calc(100% - 257px);
+    width: calc(100% - 227px);
 `
 const ComparisonTable = styled.div`
     text-align: right;

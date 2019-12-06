@@ -24,7 +24,7 @@ const StyledBackLink = styled.a`
     }
 `
 const BackLinkContainer = styled.div`
-    margin-top: 10px;
+    margin-top: 15px;
 `
 
 export class BackLink extends Component {
