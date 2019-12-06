@@ -17,10 +17,16 @@ const FilterContainer = styled.div`
     border-bottom: 1px solid rgba(200, 200, 200, 0.8);
     padding: 9px 15px;
     overflow-x: scroll;
+
+    h4 {
+        margin: 0;
+        margin-right: 10px;
+        display: inline-block;
+    }
 `
 
 const FilterInnerContainer = styled.div`
-    width: 800px;
+    width: 920px;
 `
 const FilterBar = ({
     toggleActiveMarker,
@@ -354,6 +360,7 @@ const FilterBar = ({
         <>
             <FilterContainer>
                 <FilterInnerContainer>
+                    <h4>Filter appraisals:</h4>
                     <Button 
                         type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} 
                         disabled={loading} 
