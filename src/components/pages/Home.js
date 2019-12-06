@@ -211,6 +211,7 @@ const Home = () => {
                     toggleActiveMarker={toggleActiveMarker} 
                     hoverMarker={hoverMarker} 
                     toggleHoverMarker={toggleHoverMarker} 
+                    listArray={myList.split(',')}
                 />
             </MapContainer>
         </>

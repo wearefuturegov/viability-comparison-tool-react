@@ -45,9 +45,25 @@ const developmentActiveIcon = divIcon({
 	html: `<div class="development-icon active"></div>`
 });
 
+const developmentListIcon = divIcon({
+	className: 'icon_container',
+	iconAnchor: [23, 23],
+	popupAnchor: [0, -23],
+	iconSize: [46, 46],
+	html: `<div class="development-icon on_list"></div>`
+});
+
+const developmentListActiveIcon = divIcon({
+	className: 'icon_container',
+	iconAnchor: [23, 23],
+	popupAnchor: [0, -23],
+	iconSize: [46, 46],
+	html: `<div class="development-icon on_list active"></div>`
+});
 
 
-const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker}) => {
+
+const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, listArray}) => {
 	const [position, setPosition] = useState([51.4955927,-0.0756637]);
 	const southwarkStyle = {
         color: "#256f8a",
@@ -81,7 +97,7 @@ const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hov
 				markersData.map(marker => (
 					<Marker 
 						key={marker.id}
-						icon={(activeMarker === marker.id ? developmentActiveIcon : (hoverMarker === marker.id ? developmentHoverIcon : developmentIcon))} 
+						icon={(activeMarker === marker.id ? (listArray.indexOf(marker.id) !== -1 ? developmentListActiveIcon : developmentActiveIcon) : (listArray.indexOf(marker.id) !== -1 ? developmentListIcon : (hoverMarker === marker.id ? developmentHoverIcon : developmentIcon)))} 
 						position={[marker.attributes.latitude, marker.attributes.longitude]} 
 						onClick={() => { toggleActiveMarker(marker.id)}}
 						onMouseOver={() => { toggleHoverMarker(marker.id)} }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="186px" height="186px" viewBox="0 0 186 186" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>development-icon-active</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="27.5" cy="27.5" r="27.5"></circle>
+        <filter x="-24.5%" y="-24.5%" width="149.1%" height="149.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.436990489   0 0 0 0 0.436990489   0 0 0 0 0.436990489  0 0 0 0.172858392 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="development-icon-active" transform="translate(0.000000, 9.000000)">
+            <g id="Oval">
+                <g id="path-1-link" fill="#000000" fill-rule="nonzero">
+                    <circle id="path-1" cx="88.5" cy="88.5" r="88.5"></circle>
+                </g>
+                <g id="path-1-link" fill="#046F9E">
+                    <circle id="path-1" cx="88.5" cy="88.5" r="88.5"></circle>
+                </g>
+            </g>
+            <g id="noun_building_1987214" transform="translate(40.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M89.7,81.6 L89.7,12.6 L34.9,0.9 L34.9,81.6 L31,81.6 L31,21.4 L6.3,27.6 L6.3,81.6 L0.5,81.6 L0.5,87.1 L95.5,87.1 L95.5,81.6 L89.7,81.6 Z M14.5,36.6 L23.1,36.6 L23.1,45.2 L14.5,45.2 L14.5,36.6 Z M14.5,51.5 L23.1,51.5 L23.1,60.1 L14.5,60.1 L14.5,51.5 Z M14.5,66.3 L23.1,66.3 L23.1,75 L14.5,75 L14.5,66.3 Z M72.9,21.6 L81.5,21.6 L81.5,30.2 L72.9,30.2 L72.9,21.6 Z M72.9,36.5 L81.5,36.5 L81.5,45.1 L72.9,45.1 L72.9,36.5 Z M72.9,51.4 L81.5,51.4 L81.5,60 L72.9,60 L72.9,51.4 Z M72.9,66.3 L81.5,66.3 L81.5,74.9 L72.9,74.9 L72.9,66.3 Z M58,21.6 L66.6,21.6 L66.6,30.2 L58,30.2 L58,21.6 Z M58,36.5 L66.6,36.5 L66.6,45.1 L58,45.1 L58,36.5 Z M58,51.4 L66.6,51.4 L66.6,60 L58,60 L58,51.4 Z M43.1,21.6 L51.7,21.6 L51.7,30.2 L43.1,30.2 L43.1,21.6 Z M43.1,36.5 L51.7,36.5 L51.7,45.1 L43.1,45.1 L43.1,36.5 Z M43.1,51.4 L51.7,51.4 L51.7,60 L43.1,60 L43.1,51.4 Z M43.1,66.3 L51.7,66.3 L51.7,74.9 L43.1,74.9 L43.1,66.3 Z M58,66.3 L66.6,66.3 L66.6,81.6 L58,81.6 L58,66.3 Z" id="Shape"></path>
+            </g>
+            <g id="Group-2" transform="translate(122.000000, 0.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Group" transform="translate(16.000000, 20.000000)" stroke="#046F9E" stroke-linecap="square" stroke-width="4">
+                    <line x1="0.5" y1="7.5" x2="8.5" y2="14.5" id="Line"></line>
+                    <line x1="22.5" y1="0.5" x2="8.5" y2="14.5" id="Line"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
