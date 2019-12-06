@@ -4,6 +4,7 @@ import BackLink from '../BackLink'
 import SingleMap from '../DisplayMap/SingleMap'
 import Header from '../Header';
 import ListButton from '../ListButton';
+import LoadingScreen from '../LoadingScreen';
 
 const SingleViability = styled.div`
     width: 100%;
@@ -45,7 +46,7 @@ const ViabilityAppraisal = () => {
         <SingleViability>
             <BackLink />
             { loading === true ? (
-                <p>Loading...</p>
+                <LoadingScreen />
             ) : (
                 <>
                 {chosenDevelopment && 

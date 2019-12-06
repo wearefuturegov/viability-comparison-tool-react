@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import BackLink from '../BackLink'
 import Header from '../Header';
+import ListButton from '../ListButton';
+import LoadingScreen from '../LoadingScreen';
 
 const Container = styled.div`
     width: 100%;
@@ -38,7 +40,7 @@ const TableHead = styled.div`
     font-weight: 600;
     width: 100%;
     h3 {
-        overflow: hidden;
+        overflow-x: scroll;
         margin-bottom: 0;
         background: #E4E4E4;
         padding: 13px 5px;
@@ -81,6 +83,9 @@ const TableRow = styled.div`
     &.start {
         margin-top: 15px;
     }
+    &.button-container {
+        text-align: center;
+    }
 `
 
 function addCommas(val) {
@@ -95,7 +100,16 @@ const MyList = () => {
 
     const [myList, setmyList] = useState(
         localStorage.getItem('my_comparison_list') || ''
-	);
+    );
+    
+    useEffect(() => {
+        if (myList) {
+            console.log('mylist = ' + myList)
+            localStorage.setItem('my_comparison_list', myList);
+        } else {
+            localStorage.removeItem('my_comparison_list');
+        }
+    }, [myList]);
 
     useEffect(() => {
         fetchData("https://viability-comparison-api.herokuapp.com/viability_appraisals?id=", myList, setChosenDevelopments, setLoading, setErrors)
@@ -109,7 +123,7 @@ const MyList = () => {
             <h1>Your comparison list</h1>
             
             { loading === true ? (
-                <p>Loading...</p>
+                <LoadingScreen />
             ) : (
             <TableContainer>
                 <ComparisonTableHead>
@@ -169,6 +183,7 @@ const MyList = () => {
 
                                     <TableRow className="start">£{addCommas(appraisal.attributes.residual_land_value_pence/100)}</TableRow>
                                     <TableRow>£{addCommas(appraisal.attributes.benchmark_land_value_pence/100)}</TableRow>
+                                    <TableRow className="button-container"><ListButton myList={myList} setmyList={setmyList} id={appraisal.id} /></TableRow>
                             </ComparisonTable>
                         ))
                     }
