@@ -127,70 +127,74 @@ const MyList = () => {
             { loading === true ? (
                 <LoadingScreen />
             ) : (
-            <TableContainer>
-                <ComparisonTableHead>
-                    <TableHead className="fixed">
-                        <TableRow className="invisible"></TableRow>
-                        <TableRow>Local Authority</TableRow>
-                        <TableRow>Date submitted</TableRow>
-                        <TableRow className="end">Application reference</TableRow>
+                myList ? (
+                <TableContainer>
+                    <ComparisonTableHead>
+                        <TableHead className="fixed">
+                            <TableRow className="invisible"></TableRow>
+                            <TableRow>Local Authority</TableRow>
+                            <TableRow>Date submitted</TableRow>
+                            <TableRow className="end">Application reference</TableRow>
 
-                        <TableRow className="start">Habitable rooms</TableRow>
-                        <TableRow>Residential units</TableRow>
-                        <TableRow>Affordable housing</TableRow>
-                        <TableRow>Commercial Area</TableRow>
-                        <TableRow>Developer profit <span>(% of GDV)</span></TableRow>
-                        <TableRow className="end">Max number of storeys</TableRow>
+                            <TableRow className="start">Habitable rooms</TableRow>
+                            <TableRow>Residential units</TableRow>
+                            <TableRow>Affordable housing</TableRow>
+                            <TableRow>Commercial Area</TableRow>
+                            <TableRow>Developer profit <span>(% of GDV)</span></TableRow>
+                            <TableRow className="end">Max number of storeys</TableRow>
 
-                        <TableRow className="start">GDV</TableRow>
-                        <TableRow>Construction Costs</TableRow>
-                        <TableRow>Professional Fees <span>(% of construction costs)</span></TableRow>
-                        <TableRow>Marketing and letting Fees <span>(% of construction costs)</span></TableRow>
-                        <TableRow>Finance</TableRow>
-                        <TableRow className="end">Finance rate</TableRow>
-                        
-                        <TableRow className="start end">Financial planning obligations</TableRow>
+                            <TableRow className="start">GDV</TableRow>
+                            <TableRow>Construction Costs</TableRow>
+                            <TableRow>Professional Fees <span>(% of construction costs)</span></TableRow>
+                            <TableRow>Marketing and letting Fees <span>(% of construction costs)</span></TableRow>
+                            <TableRow>Finance</TableRow>
+                            <TableRow className="end">Finance rate</TableRow>
+                            
+                            <TableRow className="start end">Financial planning obligations</TableRow>
 
-                        <TableRow className="start">Residual Land Value</TableRow>
-                        <TableRow>Benchmark Land Value</TableRow>
-                    </TableHead>
-                </ComparisonTableHead>
+                            <TableRow className="start">Residual Land Value</TableRow>
+                            <TableRow>Benchmark Land Value</TableRow>
+                        </TableHead>
+                    </ComparisonTableHead>
 
-                <ComparisonList>
-                    {chosenDevelopments && 
-                        chosenDevelopments.map(appraisal => (
-                            <ComparisonTable key={appraisal.id}>
-                                <TableHead>
-                                    <h3>{appraisal.attributes.name}</h3>
-                                </TableHead>
-                                    <TableRow>{appraisal.attributes.local_authority}</TableRow>
-                                    <TableRow>{ appraisal.attributes.date_submitted ? appraisal.attributes.date_submitted : 'No date recorded' }</TableRow>
-                                    <TableRow className="end">{appraisal.attributes.application}</TableRow>
+                    <ComparisonList>
+                        {chosenDevelopments && 
+                            chosenDevelopments.map(appraisal => (
+                                <ComparisonTable key={appraisal.id}>
+                                    <TableHead>
+                                        <h3>{appraisal.attributes.name}</h3>
+                                    </TableHead>
+                                        <TableRow>{appraisal.attributes.local_authority}</TableRow>
+                                        <TableRow>{ appraisal.attributes.date_submitted ? appraisal.attributes.date_submitted : 'No date recorded' }</TableRow>
+                                        <TableRow className="end">{appraisal.attributes.application}</TableRow>
 
-                                    <TableRow className="start">{appraisal.attributes.habitable_rooms}</TableRow>
-                                    <TableRow>{appraisal.attributes.residential_units}</TableRow>
-                                    <TableRow>{appraisal.attributes.affordable_housing_percentage}%</TableRow>
-                                    <TableRow>{appraisal.attributes.commercial_area_square_centimetres/100}m&sup2;</TableRow>
-                                    <TableRow className="doubleHeight">{appraisal.attributes.developer_profit_as_percentage_of_gdv}%</TableRow>
-                                    <TableRow className="end">{appraisal.attributes.stories}</TableRow>
+                                        <TableRow className="start">{appraisal.attributes.habitable_rooms}</TableRow>
+                                        <TableRow>{appraisal.attributes.residential_units}</TableRow>
+                                        <TableRow>{appraisal.attributes.affordable_housing_percentage}%</TableRow>
+                                        <TableRow>{appraisal.attributes.commercial_area_square_centimetres/100}m&sup2;</TableRow>
+                                        <TableRow className="doubleHeight">{appraisal.attributes.developer_profit_as_percentage_of_gdv}%</TableRow>
+                                        <TableRow className="end">{appraisal.attributes.stories}</TableRow>
 
-                                    <TableRow className="start">£{addCommas(appraisal.attributes.gross_development_value_pence/100)}</TableRow>
-                                    <TableRow>£{addCommas(appraisal.attributes.construction_costs_pence/100)}</TableRow>
-                                    <TableRow className="doubleHeight">{appraisal.attributes.professional_fees_as_percentage_of_construction_costs}%</TableRow>
-                                    <TableRow className="doubleHeight">{appraisal.attributes.marketing_and_letting_as_percentage_of_construction_costs}%</TableRow>
-                                    <TableRow>£{addCommas(appraisal.attributes.finance_pence/100)}</TableRow>
-                                    <TableRow className="end">???</TableRow>
+                                        <TableRow className="start">£{addCommas(appraisal.attributes.gross_development_value_pence/100)}</TableRow>
+                                        <TableRow>£{addCommas(appraisal.attributes.construction_costs_pence/100)}</TableRow>
+                                        <TableRow className="doubleHeight">{appraisal.attributes.professional_fees_as_percentage_of_construction_costs}%</TableRow>
+                                        <TableRow className="doubleHeight">{appraisal.attributes.marketing_and_letting_as_percentage_of_construction_costs}%</TableRow>
+                                        <TableRow>£{addCommas(appraisal.attributes.finance_pence/100)}</TableRow>
+                                        <TableRow className="end">???</TableRow>
 
-                                    <TableRow className="start end">£{addCommas(appraisal.attributes.financial_planning_obligations_pence/100)}</TableRow>
+                                        <TableRow className="start end">£{addCommas(appraisal.attributes.financial_planning_obligations_pence/100)}</TableRow>
 
-                                    <TableRow className="start">£{addCommas(appraisal.attributes.residual_land_value_pence/100)}</TableRow>
-                                    <TableRow>£{addCommas(appraisal.attributes.benchmark_land_value_pence/100)}</TableRow>
-                                    <TableRow className="button-container"><ListButton myList={myList} setmyList={setmyList} id={appraisal.id} /></TableRow>
-                            </ComparisonTable>
-                        ))
-                    }
-                </ComparisonList>
-                </TableContainer>
+                                        <TableRow className="start">£{addCommas(appraisal.attributes.residual_land_value_pence/100)}</TableRow>
+                                        <TableRow>£{addCommas(appraisal.attributes.benchmark_land_value_pence/100)}</TableRow>
+                                        <TableRow className="button-container"><ListButton myList={myList} setmyList={setmyList} id={appraisal.id} /></TableRow>
+                                </ComparisonTable>
+                            ))
+                        }
+                    </ComparisonList>
+                    </TableContainer>
+                ) : (
+                    <p>You do not currently have any saved appraisals, to compare appraisals go back and click 'add to my list' on some properties.</p>
+                )
             )
             }
         </Container>
