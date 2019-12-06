@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const StyledHeader = styled.div`
     width: calc(100% - 15px);
@@ -15,18 +16,35 @@ const StyledHeader = styled.div`
         line-height: 51px;
         font-size: 18px;
         letter-spacing: 0.75px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .myListButton {
+        color: #046F9E;
+        background-color: #fff;
+        text-decoration: none;
+        padding: 5px 7px;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        vertical-align: middle;
+        position: absolute;
+        right: 15px;
+        top: 10px;
     }
 `
-
-
-export class Header extends Component {
-    render() {
-        return (
-            <StyledHeader>
-                <h1>Viability Compare Tool</h1>
-            </StyledHeader>
-        )
-    }
+const Header = ({myList}) => {
+    return (
+        <StyledHeader>
+            <h1>Viability Compare Tool</h1>
+            { myList && 
+            <>
+                { myList.length > 0 ?
+                    <Link to={"/comparison-list/"} className={"myListButton"}>View your comparison list</Link>
+                :null}
+            </>
+            }
+        </StyledHeader>
+    )
 }
 
 export default Header

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import BackLink from '../BackLink'
 import SingleMap from '../DisplayMap/SingleMap'
+import Header from '../Header';
+import ListButton from '../ListButton';
 
 const SingleViability = styled.div`
     width: 100%;
@@ -15,6 +17,20 @@ const ViabilityAppraisal = () => {
     const [loading, setLoading] = useState(true);
     const [hasError, setErrors] =  useState(false);
 
+    const [myList, setmyList] = useState(
+        localStorage.getItem('my_comparison_list') || ''
+	);
+
+	useEffect(() => {
+        if (myList) {
+            console.log('mylist = ' + myList)
+            localStorage.setItem('my_comparison_list', myList);
+        } else {
+            localStorage.removeItem('my_comparison_list');
+        }
+    }, [myList]);
+
+
     useEffect(() => {
         fetchData("https://viability-comparison-api.herokuapp.com/", window.location.pathname, setChosenDevelopment, setLoading, setErrors)
     }, []);
@@ -24,6 +40,8 @@ const ViabilityAppraisal = () => {
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     return (
+        <>
+        <Header myList={myList} />
         <SingleViability>
             <BackLink />
             { loading === true ? (
@@ -33,6 +51,7 @@ const ViabilityAppraisal = () => {
                 {chosenDevelopment && 
                 <>
                     <h1>{chosenDevelopment.attributes.name}</h1>
+                    <ListButton myList={myList} setmyList={setmyList} id={chosenDevelopment.id} />
                     <ul>
                         <li>Local Authority: {chosenDevelopment.attributes.local_authority}</li>
                         <li>Date submitted: {chosenDevelopment.attributes.date_submitted}</li>
@@ -63,6 +82,7 @@ const ViabilityAppraisal = () => {
 				<p>Sorry there was an error fetching the results, please try again.</p>
 			}
         </SingleViability>
+        </>
     )
 }
 

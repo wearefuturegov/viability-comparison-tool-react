@@ -47,6 +47,12 @@ const StyledButton = styled.button`
         }
     }
 
+    &.small {
+        font-size: 12px;
+        padding: 2px 5px 3px 5px;
+        border-width: 1px;
+    }
+
     &:disabled, &:disabled:hover {
         background: #eee;
         border: 2px solid #eee;

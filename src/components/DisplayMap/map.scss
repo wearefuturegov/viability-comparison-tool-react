@@ -39,6 +39,14 @@
             background-size: 100%;
             cursor: default;
         }
+        &.on_list {
+            background: url('../../assets/development-icon-list.svg');
+            background-size: 100%;
+        }
+        &.on_list.active {
+            background: url('../../assets/development-icon-list-active.svg');
+            background-size: 100%;
+        }
         &.hovered {
             transform: scale(1.2);
         }
