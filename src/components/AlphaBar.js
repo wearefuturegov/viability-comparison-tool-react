@@ -15,7 +15,7 @@ const AlphaBanner = styled.span`
     outline: 2px solid transparent;
     outline-offset: -2px;
     color: #fff;
-    background-color: #046F9E;
+    background-color: #333;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
