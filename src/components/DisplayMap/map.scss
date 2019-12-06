@@ -18,6 +18,7 @@
 .single-page-map {
     position: relative;
     width: calc(100% - 30px);
+    overflow-x: scroll;
     height: 450px;
     cursor: grab;
 

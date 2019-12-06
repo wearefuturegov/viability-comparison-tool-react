@@ -21,13 +21,19 @@
             left: 161px !important;
         }
         &.gdv-modal {
-            left: 305px !important;
+            left: 395px !important;
         }
         &.stories-modal {
-            left: 420px !important;
+            left: 304px !important;
         }
         &.commercial-modal {
-            left: 500px !important;
+            left: 375px !important;
+        }
+
+        @media only screen and (max-width: 600px) {
+            &.residential-modal, &.gdv-modal, &.stories-modal, &.commercial-modal {
+                left: 0px !important;
+            }
         }
 
         &:not(.commercial-modal) {

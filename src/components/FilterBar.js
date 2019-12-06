@@ -16,6 +16,11 @@ const FilterContainer = styled.div`
     width: calc(100% - 30px);
     border-bottom: 1px solid rgba(200, 200, 200, 0.8);
     padding: 9px 15px;
+    overflow-x: scroll;
+`
+
+const FilterInnerContainer = styled.div`
+    width: 800px;
 `
 const FilterBar = ({
     toggleActiveMarker,
@@ -348,36 +353,38 @@ const FilterBar = ({
     return (
         <>
             <FilterContainer>
-                <Button 
-                    type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} 
-                    disabled={loading} 
-                    onClick={() => handleOpenModal('habitable')}>
-                        {habitableButtonText}
-                </Button>
-                <Button 
-                    type={'filterBtn ' + (!residentialIsFiltered ? '' : 'primary')} 
-                    disabled={loading} 
-                    onClick={() => handleOpenModal('residential')}>
-                        {residentialButtonText}
-                </Button>
-                <Button 
-                    type={'filterBtn ' + (!GDVIsFiltered ? '' : 'primary')} 
-                    disabled={loading} 
-                    onClick={() => handleOpenModal('gdv')}>
-                        {GDVButtonText}
-                </Button>
-                <Button 
-                    type={'filterBtn ' + (!StoriesIsFiltered ? '' : 'primary')} 
-                    disabled={loading} 
-                    onClick={() => handleOpenModal('stories')}>
-                        {StoriesButtonText}
-                </Button>
-                <Button 
-                    type={'filterBtn ' + (commercial==='off' ? '' : 'primary')} 
-                    disabled={loading} 
-                    onClick={() => handleOpenModal('commercial')}>
-                        {CommercialButtonText}
-                </Button>
+                <FilterInnerContainer>
+                    <Button 
+                        type={'filterBtn ' + (!habitableIsFiltered ? '' : 'primary')} 
+                        disabled={loading} 
+                        onClick={() => handleOpenModal('habitable')}>
+                            {habitableButtonText}
+                    </Button>
+                    <Button 
+                        type={'filterBtn ' + (!residentialIsFiltered ? '' : 'primary')} 
+                        disabled={loading} 
+                        onClick={() => handleOpenModal('residential')}>
+                            {residentialButtonText}
+                    </Button>
+                    <Button 
+                        type={'filterBtn ' + (!StoriesIsFiltered ? '' : 'primary')} 
+                        disabled={loading} 
+                        onClick={() => handleOpenModal('stories')}>
+                            {StoriesButtonText}
+                    </Button>
+                    <Button 
+                        type={'filterBtn ' + (commercial==='off' ? '' : 'primary')} 
+                        disabled={loading} 
+                        onClick={() => handleOpenModal('commercial')}>
+                            {CommercialButtonText}
+                    </Button>
+                    <Button 
+                        type={'filterBtn ' + (!GDVIsFiltered ? '' : 'primary')} 
+                        disabled={loading} 
+                        onClick={() => handleOpenModal('gdv')}>
+                            {GDVButtonText}
+                    </Button>
+                </FilterInnerContainer>
             </FilterContainer>
             <Modal 
                     className={modalType+"-modal"} 
