@@ -5,6 +5,7 @@ import SingleMap from '../DisplayMap/SingleMap'
 import Header from '../Header';
 import ListButton from '../ListButton';
 import LoadingScreen from '../LoadingScreen';
+import AlphaBar from '../AlphaBar';
 
 const SingleViability = styled.div`
     width: calc(100% - 30px);
@@ -30,7 +31,7 @@ const SingleViability = styled.div`
     .single-page-map {
         margin-top: 50px;
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: 50px;
     }
     hr {
         margin-top: 20px;
@@ -165,6 +166,7 @@ const ViabilityAppraisal = () => {
 				<p>Sorry there was an error fetching the results, please try again.</p>
 			}
         </SingleViability>
+        <AlphaBar />
         </>
     )
 }

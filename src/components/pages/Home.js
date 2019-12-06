@@ -5,6 +5,7 @@ import List from '../../components/List/List'
 import FilterBar from '../../components/FilterBar'
 import { useQueryParam, NumberParam, StringParam } from 'use-query-params';
 import Header from '../Header';
+import AlphaBar from '../AlphaBar';
 
 const MapContainer = styled.div`
     width: 100%;
@@ -214,6 +215,8 @@ const Home = () => {
                     listArray={myList.split(',')}
                 />
             </MapContainer>
+
+            <AlphaBar />
         </>
     )
 }

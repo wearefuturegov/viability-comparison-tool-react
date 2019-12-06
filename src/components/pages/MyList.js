@@ -4,6 +4,7 @@ import BackLink from '../BackLink'
 import Header from '../Header';
 import ListButton from '../ListButton';
 import LoadingScreen from '../LoadingScreen';
+import AlphaBar from '../AlphaBar';
 
 const Container = styled.div`
     width: calc(100% - 30px);
@@ -193,6 +194,7 @@ const MyList = () => {
             )
             }
         </Container>
+        <AlphaBar />
         </>
    )
 }
