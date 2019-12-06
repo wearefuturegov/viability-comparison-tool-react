@@ -13,8 +13,9 @@ const Container = styled.div`
 `
 const TableContainer = styled.div`
     width: 100%;
-    overflow: auto;
     white-space: nowrap;
+    margin-bottom: 50px;
+    margin-right: 50px;
 `
 const ComparisonTableHead = styled.div`
     text-align: left;
@@ -22,7 +23,9 @@ const ComparisonTableHead = styled.div`
     position: relative;
 `
 const ComparisonList = styled.div`
-    margin-left: 222px;
+    margin-left: 227px;
+    overflow-x: scroll;
+    width: calc(100% - 257px);
 `
 const ComparisonTable = styled.div`
     text-align: right;
@@ -140,7 +143,7 @@ const MyList = () => {
                 <ComparisonList>
                     {chosenDevelopments && 
                         chosenDevelopments.map(appraisal => (
-                            <ComparisonTable>
+                            <ComparisonTable key={appraisal.id}>
                                 <TableHead>
                                     <h3>{appraisal.attributes.name}</h3>
                                 </TableHead>
