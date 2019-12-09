@@ -21,7 +21,7 @@ const ListButton = ({myList, setmyList, id, type}) => {
 	}
 
     return (
-        <Button type={type + (listArray.indexOf(id) !== -1 ? ' primary' : '')} onClick={() => { listClick(id)}}> {listArray.indexOf(id) === -1 ? 'Add to my list' : 'Delete from list'} </Button>
+        <Button type={type + (listArray.indexOf(id) !== -1 ? ' delete' : '')} onClick={() => { listClick(id)}}> {listArray.indexOf(id) === -1 ? 'Add to my list' : 'Remove from list'} </Button>
     )
 }
 

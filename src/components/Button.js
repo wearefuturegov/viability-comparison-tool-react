@@ -50,6 +50,19 @@ const StyledButton = styled.button`
             border-color: #046F9E;
         }
     }
+    &.delete {
+        border: 1px solid #7b0d0d;
+        background: #7b0d0d;
+        color: #fff;
+
+        &:hover {
+            background: #ad0909;
+        }
+        &:active {
+            background: #7b0d0d;
+            border: 1px solid #fff;
+        }
+    }
 
     &.small {
         font-size: 12px;
