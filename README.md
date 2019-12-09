@@ -13,9 +13,9 @@ The goal of this app is to surface existing developments and planning applicatio
 Currently this app allows:
 
 - Users to browse the full data set via a map or list
-- The ability to filter this data set by bumber of habitable rooms, residential units, number of stories, commercial space & GDV (gross development value)
+- The ability to filter this data set by number of habitable rooms, residential units, number of stories, commercial space & GDV (gross development value)
 - Viewing further details of an application in a single show page
-- If the data is there, viewing the plot of land for thie application via a GeoJSON plotted on a map
+- If the data is there, viewing the plot of land for the application via a GeoJSON plotted on a map
 - The ability to create and view a list of properties to compare which is stored in local storage
 
 We believe that this app has the potential to:
