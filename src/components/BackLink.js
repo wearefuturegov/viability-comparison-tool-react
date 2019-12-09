@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+
+// const BrowserHistory = require('react-router/lib/BrowserHistory').default;
 
 const StyledBackLink = styled.a`
     font-size: 18px;
@@ -29,10 +32,14 @@ const BackLinkContainer = styled.div`
 
 export class BackLink extends Component {
 
+    constructor(props){
+        super(props);
+     }
+
     render() {
         return (
             <BackLinkContainer>
-                <StyledBackLink href="/">
+                <StyledBackLink href="#" onClick={() => this.props.history.goBack()} title="Go back to the previous page">
                     <FontAwesomeIcon icon={faAngleLeft} />
                     <span>Back</span>
                 </StyledBackLink>
@@ -41,4 +48,4 @@ export class BackLink extends Component {
     }
 }
 
-export default BackLink
+export default withRouter(BackLink)
