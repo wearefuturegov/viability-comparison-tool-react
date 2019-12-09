@@ -1,70 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Viability Comparison Tool
 
-## Available Scripts
+This repo is for the front end application of the Viability Comparison Tool. The data used in this tool relies on the API we have created to provide access to the new standardised data schema we have created to standardise how data is stored and shared with others, using consistent definitions throughout, complimenting the GLA Planning Data Standard. The schema can be used to validate data before it’s used by other systems and allows different tools to talk to each other more easily.
 
-In the project directory, you can run:
+The new data schema can be found here: [https://github.com/wearefuturegov/planning-viability-doc-schema](https://github.com/wearefuturegov/planning-viability-doc-schema)
 
-### `npm install`
+The API built in Ruby can be found here: [https://github.com/wearefuturegov/viability-comparison-api](https://github.com/wearefuturegov/viability-comparison-api) 
 
-### `npm start`
+This repo contains the front end application which is built in React. It is currently being hosted with live deploys from the master branch on Netlify here: [https://viability-comparison-tool.netlify.com](https://viability-comparison-tool.netlify.com)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The goal of this app is to surface existing developments and planning applications so that they can be searched & filtered to identify comparable sites. It allows officers to sense check figures & affordable housing proposed by applicants.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Currently this app allows:
 
-### `npm test`
+- Users to browse the full data set via a map or list
+- The ability to filter this data set by bumber of habitable rooms, residential units, number of stories, commercial space & GDV (gross development value)
+- Viewing further details of an application in a single show page
+- If the data is there, viewing the plot of land for thie application via a GeoJSON plotted on a map
+- The ability to create and view a list of properties to compare which is stored in local storage
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We believe that this app has the potential to:
 
-### `npm build`
+- Allow officers to engage with viability - at a high level - much earlier in the process
+- Improve and reinforce officers’ knowledge of viability
+- Give an early sense check of an application, and could pick up with applicants before sending to consultant
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Prerequisites
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- `node` and `npm`
+- Connection to the [API data set](https://github.com/wearefuturegov/viability-comparison-api) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running it locally
 
-### `npm eject`
+1. Clone the repo and install ruby dependencies with `bundle install`
+2. Then, install front-end dependencies with `npm install`
+3. `npm start` to start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The app will be available on port 3000.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deploying to the web
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+It is currently auto deploying to Netlify on this URL: [https://viability-comparison-tool.netlify.com](https://viability-comparison-tool.netlify.com)
