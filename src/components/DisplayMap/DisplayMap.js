@@ -65,6 +65,7 @@ const developmentListActiveIcon = divIcon({
 
 const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hoverMarker, toggleHoverMarker, listArray}) => {
 	const [position, setPosition] = useState([51.4955927,-0.0756637]);
+	const [zoom, setZoom] = useState(13);
 	const southwarkStyle = {
         color: "#256f8a",
         weight: 2,
@@ -83,10 +84,10 @@ const DisplayMap = ({loading, markersData, activeMarker, toggleActiveMarker, hov
 			const currentActive = markersData.find(e => e.id === activeMarker);
 			setPosition([currentActive.attributes.latitude, currentActive.attributes.longitude]);
 		}
-    }, [activeMarker, markersData]);
-	  		
+	}, [activeMarker, markersData]);
+
 	return (
-		<Map center={position} zoom={13}>
+		<Map center={position} zoom={zoom}>
 			<TileLayer
 				attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a>'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
