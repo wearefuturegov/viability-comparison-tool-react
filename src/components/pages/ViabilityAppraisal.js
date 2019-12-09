@@ -118,7 +118,7 @@ const ViabilityAppraisal = () => {
                         <Bold>Developer profit <span>(% of GDV)</span>:</Bold> {chosenDevelopment.attributes.developer_profit_as_percentage_of_gdv}%
                     </ViabilityDetails>
                     <ViabilityDetails>
-                        <Bold>Max number of storeys:</Bold> {chosenDevelopment.attributes.stories}
+                        <Bold>Max number of stories:</Bold> {chosenDevelopment.attributes.stories}
                     </ViabilityDetails>
                     
                     <hr/>
