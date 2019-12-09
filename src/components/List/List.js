@@ -86,7 +86,7 @@ const List = ({
 							<p><span className="bold">Affordable housing:</span> {marker.attributes.affordable_housing_percentage}%</p>
               <p><span className="bold">Developer profit (% of GDV):</span> {marker.attributes.developer_profit_as_percentage_of_gdv}%</p>
 							<p><span className="bold">Max number of storeys:</span> {marker.attributes.stories}</p>
-							<Link to={"/viability_appraisals/"+marker.id}>
+							<Link to={"/viability_appraisals/"+marker.id} title={"View more details about " + marker.attributes.name}>
 								<span>View all details</span>
 								<FontAwesomeIcon icon={faAngleRight} />
 							</Link>

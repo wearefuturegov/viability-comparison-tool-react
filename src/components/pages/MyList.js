@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 import BackLink from '../BackLink'
 import Header from '../Header';
 import ListButton from '../ListButton';
@@ -48,6 +49,12 @@ const TableHead = styled.div`
         padding: 13px 5px;
         text-align: center;
         font-size: 16px;
+    }
+    a {
+        color: #046F9E;
+        &:hover {
+            text-decoration: none;
+        }
     }
     &.fixed {
         background: #fff;
@@ -162,7 +169,7 @@ const MyList = () => {
                             chosenDevelopments.map(appraisal => (
                                 <ComparisonTable key={appraisal.id}>
                                     <TableHead>
-                                        <h3>{appraisal.attributes.name}</h3>
+                                        <h3><Link to={"/viability_appraisals/"+appraisal.id}  title={"View more details about " + appraisal.attributes.name}>{appraisal.attributes.name}</Link></h3>
                                     </TableHead>
                                         <TableRow>{appraisal.attributes.local_authority}</TableRow>
                                         <TableRow>{ appraisal.attributes.date_submitted ? appraisal.attributes.date_submitted : 'No date recorded' }</TableRow>
