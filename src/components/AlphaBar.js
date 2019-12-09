@@ -9,6 +9,7 @@ const StyledAlphaBar = styled.div`
     bottom: 0;
     z-index: 99999;
     border-top: 1px solid #d6d6d6;
+    text-align: center;
 `
 const AlphaBanner = styled.span`
     display: inline-block;
