@@ -27,7 +27,8 @@ We believe that this app has the potential to:
 ## Prerequisites
 
 - `node` and `npm`
-- Connection to the [API data set](https://github.com/wearefuturegov/viability-comparison-api) 
+- Connection to the [API data set](https://github.com/wearefuturegov/viability-comparison-api)
+- For the map functionality we are using [Leaflet](https://leafletjs.com/reference-1.6.0.html) and a React-Leaflet plugin, which you can read more about here: [https://react-leaflet.js.org/docs/en/v1/intro](https://react-leaflet.js.org/docs/en/v1/intro)
 
 ## Running it locally
 
