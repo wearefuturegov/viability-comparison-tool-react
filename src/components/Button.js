@@ -28,7 +28,7 @@ const StyledButton = styled.button`
         padding: 3px 10px 4px 10px;
 
         &.clear {
-            border-color: #909090;
+            border-color: #7b0d0d;
         }
     }
 
