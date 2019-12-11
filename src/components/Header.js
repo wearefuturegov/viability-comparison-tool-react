@@ -39,7 +39,7 @@ const StyledHeader = styled.div`
 const Header = ({myList}) => {
     return (
         <StyledHeader>
-            <h1><a href="/" title="Go home">Viability Compare Tool</a></h1>
+            <h1><a href="/" title="Go home">Viability Comparison Tool</a></h1>
             { myList && 
             <>
                 { myList.length > 0 ?
