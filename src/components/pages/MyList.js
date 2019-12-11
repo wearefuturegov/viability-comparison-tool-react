@@ -148,7 +148,7 @@ const MyList = () => {
                             <TableRow>Affordable housing</TableRow>
                             <TableRow>Commercial Area</TableRow>
                             <TableRow>Developer profit <span>(% of GDV)</span></TableRow>
-                            <TableRow className="end">Max number of stories</TableRow>
+                            <TableRow className="end">Max number of storeys</TableRow>
 
                             <TableRow className="start">GDV</TableRow>
                             <TableRow>Construction Costs</TableRow>
