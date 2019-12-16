@@ -138,9 +138,9 @@ const ViabilityAppraisal = () => {
                     <ViabilityDetails>
                         <Bold>Finance:</Bold> £{addCommas(chosenDevelopment.attributes.finance_pence/100)}
                     </ViabilityDetails>
-                    <ViabilityDetails>
+                    {/* <ViabilityDetails>
                         <Bold>Finance rate:</Bold> 
-                    </ViabilityDetails>
+                    </ViabilityDetails> */}
                     
                     <hr/>
 

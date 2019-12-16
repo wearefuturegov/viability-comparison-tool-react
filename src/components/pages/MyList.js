@@ -154,8 +154,8 @@ const MyList = () => {
                             <TableRow>Construction Costs</TableRow>
                             <TableRow>Professional Fees <span>(% of construction costs)</span></TableRow>
                             <TableRow>Marketing and letting Fees <span>(% of construction costs)</span></TableRow>
-                            <TableRow>Finance</TableRow>
-                            <TableRow className="end">Finance rate</TableRow>
+                            <TableRow className="end">Finance</TableRow>
+                            {/* <TableRow className="end">Finance rate</TableRow> */}
                             
                             <TableRow className="start end">Financial planning obligations</TableRow>
 
@@ -186,8 +186,8 @@ const MyList = () => {
                                         <TableRow>£{addCommas(appraisal.attributes.construction_costs_pence/100)}</TableRow>
                                         <TableRow className="doubleHeight">{appraisal.attributes.professional_fees_as_percentage_of_construction_costs}%</TableRow>
                                         <TableRow className="doubleHeight">{appraisal.attributes.marketing_and_letting_as_percentage_of_construction_costs}%</TableRow>
-                                        <TableRow>£{addCommas(appraisal.attributes.finance_pence/100)}</TableRow>
-                                        <TableRow className="end">???</TableRow>
+                                        <TableRow className="end">£{addCommas(appraisal.attributes.finance_pence/100)}</TableRow>
+                                        {/* <TableRow className="end">???</TableRow> */}
 
                                         <TableRow className="start end">£{addCommas(appraisal.attributes.financial_planning_obligations_pence/100)}</TableRow>
 
