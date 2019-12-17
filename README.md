@@ -40,4 +40,6 @@ The app will be available on port 3000.
 
 ## Deploying to the web
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/38fb7078-c643-4a92-927a-765514963791/deploy-status)](https://app.netlify.com/sites/viability-comparison-tool/deploys)
+
 It is currently auto deploying to Netlify on this URL: [https://viability-comparison-tool.netlify.com](https://viability-comparison-tool.netlify.com)
